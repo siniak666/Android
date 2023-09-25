@@ -323,6 +323,7 @@ class BrowserTabViewModel @Inject constructor(
     )
 
     sealed class Command {
+        object EnableSystemAutofillService : Command()
         class OpenInNewTab(
             val query: String,
             val sourceTabId: String? = null,
@@ -1220,6 +1221,7 @@ class BrowserTabViewModel @Inject constructor(
         title: String?,
     ) {
         Timber.v("Page changed: $url")
+        command.value = EnableSystemAutofillService
         hasCtaBeenShownForCurrentPage.set(false)
         buildSiteFactory(url, title)
         setAdClickActiveTabData(url)

@@ -33,6 +33,7 @@ import android.print.PrintManager
 import android.text.Editable
 import android.view.*
 import android.view.View.*
+import android.view.autofill.AutofillManager
 import android.view.inputmethod.EditorInfo
 import android.webkit.PermissionRequest
 import android.webkit.URLUtil
@@ -80,6 +81,7 @@ import com.duckduckgo.app.browser.BrowserTabViewModel.AccessibilityViewState
 import com.duckduckgo.app.browser.BrowserTabViewModel.AutoCompleteViewState
 import com.duckduckgo.app.browser.BrowserTabViewModel.BrowserViewState
 import com.duckduckgo.app.browser.BrowserTabViewModel.Command
+import com.duckduckgo.app.browser.BrowserTabViewModel.Command.EnableSystemAutofillService
 import com.duckduckgo.app.browser.BrowserTabViewModel.Command.ShowBackNavigationHistory
 import com.duckduckgo.app.browser.BrowserTabViewModel.CtaViewState
 import com.duckduckgo.app.browser.BrowserTabViewModel.FindInPageViewState
@@ -585,6 +587,8 @@ class BrowserTabFragment :
         }
     }
 
+    var suppressSystemAutofillOnLoginFormUpdate : Boolean = true
+
     private val autofillCallback = object : Callback {
         override suspend fun onCredentialsAvailableToInject(
             originalUrl: String,
@@ -615,6 +619,15 @@ class BrowserTabFragment :
 
         override fun onCredentialsSaved(savedCredentials: LoginCredentials) {
             viewModel.onShowUserCredentialsSaved(savedCredentials)
+        }
+
+        override fun onSuppressSystemAutofill() {
+            if(suppressSystemAutofillOnLoginFormUpdate) {
+                Timber.w("xxx onSuppressSystemAutofillService - suppressing system autofill attempts")
+                forceDisableSystemAutofill(showToast = false)
+            } else {
+                Timber.d("xxx onSuppressSystemAutofillService - not suppressing system autofill attempts")
+            }
         }
 
         override suspend fun onCredentialsAvailableToSave(
@@ -1097,6 +1110,7 @@ class BrowserTabFragment :
         }
 
         when (it) {
+            is EnableSystemAutofillService -> forceEnableSystemAutofill(showToast = false)
             is NavigationCommand.Refresh -> refresh()
             is Command.OpenInNewTab -> {
                 browserActivity?.openInNewTab(it.query, it.sourceTabId)
@@ -2177,6 +2191,58 @@ class BrowserTabFragment :
         showDialogHidingPrevious(dialog, CredentialSavePickerDialog.TAG)
     }
 
+    private fun forceDisableSystemAutofill(showToast: Boolean) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            webView?.let { wv ->
+                if(wv.importantForAutofill == IMPORTANT_FOR_AUTOFILL_NO_EXCLUDE_DESCENDANTS) {
+                    Timber.v("xxx system autofill already disabled")
+                    return
+                }
+
+                Timber.d("xxx disabling system autofill")
+                wv.importantForAutofill = IMPORTANT_FOR_AUTOFILL_NO_EXCLUDE_DESCENDANTS
+                autofillService()?.notifyValueChanged(wv)
+                autofillService()?.cancel()
+                Timber.w("xxx Important for autofill: ${wv.importantForAutofill.mapAutofillSetting()}")
+
+                if(showToast) {
+                    Toast.makeText(requireContext(), "Autofill integration disabled", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun forceEnableSystemAutofill(showToast: Boolean) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            webView?.let { wv ->
+                if(wv.importantForAutofill == IMPORTANT_FOR_AUTOFILL_YES) {
+                    Timber.v("xxx system autofill already enabled")
+                    return
+                }
+
+                Timber.d("xxx enabling system autofill")
+                wv.importantForAutofill = IMPORTANT_FOR_AUTOFILL_YES
+                autofillService()?.notifyValueChanged(wv)
+                autofillService()?.requestAutofill(wv)
+                Timber.w("xxx Important for autofill: ${wv.importantForAutofill.mapAutofillSetting()}")
+
+                if(showToast) {
+                    Toast.makeText(requireContext(), "Autofill integration enabled", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    fun Int.mapAutofillSetting(): String {
+        return when (this) {
+            IMPORTANT_FOR_AUTOFILL_YES -> "IMPORTANT FOR AUTOFILL: YES"
+            IMPORTANT_FOR_AUTOFILL_NO -> "IMPORTANT FOR AUTOFILL: NO"
+            IMPORTANT_FOR_AUTOFILL_NO_EXCLUDE_DESCENDANTS -> "IMPORTANT FOR AUTOFILL: NO (exclude descendants)"
+            else -> "Something else"
+        }
+    }
+
+
     private fun showAutofillDialogUpdatePassword(
         currentUrl: String,
         credentials: LoginCredentials,
@@ -3094,6 +3160,14 @@ class BrowserTabFragment :
                 addTabsObserver()
             }
         }
+    }
+
+    private fun autofillService() : AutofillManager? {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return requireContext().getSystemService(AutofillManager::class.java)
+        }
+
+        return null
     }
 
     inner class BrowserTabFragmentRenderer {

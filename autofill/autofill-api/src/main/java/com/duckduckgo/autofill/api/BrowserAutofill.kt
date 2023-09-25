@@ -153,4 +153,5 @@ interface Callback {
      * Called when credentials have been saved, and we want to show the user some visual confirmation.
      */
     fun onCredentialsSaved(savedCredentials: LoginCredentials)
+    fun onSuppressSystemAutofill()
 }

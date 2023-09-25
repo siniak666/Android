@@ -245,6 +245,8 @@ class AutofillStoredBackJavascriptInterface @Inject constructor(
     fun storeFormData(data: String) {
         Timber.i("storeFormData called, credentials provided to be persisted")
 
+        callback?.onSuppressSystemAutofill()
+
         storeFormDataJob += coroutineScope.launch(dispatcherProvider.default()) {
             val currentUrl = currentUrlProvider.currentUrl(webView) ?: return@launch
 
