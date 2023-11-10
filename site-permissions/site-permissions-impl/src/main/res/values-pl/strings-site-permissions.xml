@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Witryny mogą korzystać z Twojej kamery i mikrofonu tylko wtedy, gdy pozwolisz DuckDuckGo poprosić o dostęp.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Otwórz ustawienia</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Anuluj</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Przyznać %1$s uprawnienia dostępu do oprogramowania DRM na urządzeniu?</string>
+    <string name="drmSiteDialogSubtitle">Oprogramowanie Digital Rights Management jest wymagane do odtwarzania chronionych treści multimedialnych, ale zapewnia również dostęp do identyfikatorów urządzeń. Udzielaj zgody na dostęp do tych danych tylko witrynom, którym ufasz. W każdej chwili możesz zarządzać uprawnieniami w ustawieniach. <annotation type="drm_learn_more_link">Dowiedz się więcej</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Zawsze</string>
+    <string name="drmSiteDialogAllowOnce">Tylko dla tej sesji</string>
+    <string name="drmSiteDialogDenyAlways">Zawsze odmawiaj</string>
+    <string name="drmSiteDialogDenyOnce">Odmów w tej sesji</string>
 </resources>
