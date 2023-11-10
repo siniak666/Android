@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Stranice mogu koristiti tvoju kameru i mikrofon samo ako dopustiš DuckDuckGou da zatraži pristup.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Otvori postavke</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Otkaži</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Pružiti web lokaciji %1$s dozvolu za pristup DRM softveru na tvom uređaju?</string>
+    <string name="drmSiteDialogSubtitle">Softver za upravljanje digitalnim pravima potreban je za reprodukciju zaštićenog medijskog sadržaja, ali i za pristup identifikatorima uređaja. Pruži dopuštenje samo web lokacijama kojima vjeruješ u vezi s rukovanjem ovim podacima. Dopuštenjima možeš upravljati u svakom trenutku u Postavkama. <annotation type="drm_learn_more_link">Saznaj više</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Uvijek</string>
+    <string name="drmSiteDialogAllowOnce">Samo za ovu sesiju</string>
+    <string name="drmSiteDialogDenyAlways">Uvijek odbij</string>
+    <string name="drmSiteDialogDenyOnce">Odbij za ovu sesiju</string>
 </resources>
