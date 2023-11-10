@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Sivustot voivat käyttää kameraa ja mikrofonia vain, jos annat DuckDuckGon pyytää niiden käyttöoikeutta.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Avaa asetukset</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Peruuta</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Myönnetäänkö sivustolle %1$s lupa käyttää laitteesi DRM-ohjelmistoa?</string>
+    <string name="drmSiteDialogSubtitle">Suojatun mediasisällön toistaminen vaatii Digital Rights Management -ohjelmiston, mutta se antaa lisäksi laitteen tunnisteiden käyttöluvan. Myönnä lupa vain sivustoille, joihin luotat näiden tietojen suhteen. Voit hallita lupia milloin vain asetuksissa. <annotation type="drm_learn_more_link">Lue lisää</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Aina</string>
+    <string name="drmSiteDialogAllowOnce">Vain tässä istunnossa</string>
+    <string name="drmSiteDialogDenyAlways">Kiellä aina</string>
+    <string name="drmSiteDialogDenyOnce">Kiellä tässä istunnossa</string>
 </resources>
