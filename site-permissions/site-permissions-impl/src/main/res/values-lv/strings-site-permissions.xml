@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Vietnes var izmantot tavu kameru un mikrofonu tikai tad, ja tu atļauj DuckDuckGo prasīt piekļuvi.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Atvērt iestatījumus</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Atcelt</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Piešķirt %1$s atļauju piekļūt DRM programmatūrai tavā ierīcē?</string>
+    <string name="drmSiteDialogSubtitle">Lai atskaņotu aizsargātu multivides saturu, ir nepieciešama digitālo tiesību pārvaldības programmatūra, kas nodrošina arī piekļuvi ierīces identifikatoriem. Piešķir atļauju tikai tām vietnēm, kurām uztici šos datus. Atļaujas jebkurā laikā vari pārvaldīt iestatījumos. <annotation type="drm_learn_more_link">Uzzināt vairāk</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Vienmēr</string>
+    <string name="drmSiteDialogAllowOnce">Tikai šai sesijai</string>
+    <string name="drmSiteDialogDenyAlways">Vienmēr aizliegt</string>
+    <string name="drmSiteDialogDenyOnce">Aizliegt šai sesijai</string>
 </resources>
