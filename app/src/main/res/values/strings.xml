@@ -727,6 +727,7 @@
     <string name="sitePermissionsSettingsLocation">Location</string>
     <string name="sitePermissionsSettingsCamera">Camera</string>
     <string name="sitePermissionsSettingsMicrophone">Microphone</string>
+    <string name="sitePermissionsSettingsDRM">DRM</string>
     <string name="sitePermissionsSettingsAllowedSitesTitle">Manage Sites</string>
     <string name="sitePermissionsSettingsEmptyText">No sites yet</string>
     <string name="sitePermissionsRemoveAllWebsitesSnackbarText">Permissions Removed for All Sites</string>
