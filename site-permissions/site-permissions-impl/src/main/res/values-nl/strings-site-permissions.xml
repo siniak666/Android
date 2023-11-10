@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Sites kunnen je camera en microfoon alleen gebruiken als je DuckDuckGo toestaat om toegang te vragen.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Open Instellingen</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Annuleren</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">%1$s toestemming verlenen voor toegang tot DRM-software op je apparaat?</string>
+    <string name="drmSiteDialogSubtitle">Digital Rights Management-software is nodig om beveiligde mediacontent af te spelen, maar biedt ook toegang tot apparaatherkenners. Geef alleen toestemming aan sites die je vertrouwt met deze gegevens. Je kunt de machtigingen op elk moment beheren in de instellingen. <annotation type="drm_learn_more_link">Meer informatie</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Altijd</string>
+    <string name="drmSiteDialogAllowOnce">Alleen voor deze sessie</string>
+    <string name="drmSiteDialogDenyAlways">Altijd weigeren</string>
+    <string name="drmSiteDialogDenyOnce">Weigeren voor deze sessie</string>
 </resources>
