@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Если вы разрешите DuckDuckGo запрашивать доступ, сайты смогут использовать только камеру и микрофон.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Открыть Настройки</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Отменить</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Открыть сайту %1$s доступ к программам DRM (защиты авторских прав) на вашем устройстве?</string>
+    <string name="drmSiteDialogSubtitle">Программы защиты авторских прав (DRM) необходимы для воспроизведения защищенного медиаконтента, однако они также открывают доступ к идентификатором устройства. Предоставляйте доступ только тем сайтам, которым вы доверяете. Права доступа можно изменить в «Настройках». <annotation type="drm_learn_more_link">Подробнее...</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Всегда</string>
+    <string name="drmSiteDialogAllowOnce">Только для этой сессии</string>
+    <string name="drmSiteDialogDenyAlways">Всегда отказывать</string>
+    <string name="drmSiteDialogDenyOnce">Отказать для этой сессии</string>
 </resources>
