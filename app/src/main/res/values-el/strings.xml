@@ -723,11 +723,12 @@
 
     <!-- Site Permissions Settings -->
     <string name="settingsSitePermissions">Δικαιώματα ιστότοπου</string>
-    <string name="sitePermissionsSettingsDescription">Οι ιστότοποι που επισκέπτεστε ενδέχεται να αιτηθούν πρόσβαση στην τοποθεσία, στην κάμερα ή στο μικρόφωνο της συσκευής σας.« Δεν θα μπορούν να έχουν πρόσβαση σε αυτά εάν δεν τους παρέχετε ρητά την άδειά σας.</string>
+    <string name="sitePermissionsSettingsDescription">Οι ιστότοποι που επισκέπτεστε ενδέχεται να ζητήσουν πρόσβαση στην τοποθεσία, την κάμερα, το μικρόφωνο ή το λογισμικό DRM (Διαχείριση ψηφιακών δικαιωμάτων) της συσκευής σας. Δεν θα μπορούν να έχουν πρόσβαση σε αυτά εάν δεν τους παρέχετε ρητά την άδειά σας.</string>
     <string name="sitePermissionsSettingsEnablePermissionTitle">Να επιτρέπεται σε όλους τους ιστότοπους να αιτούνται:</string>
     <string name="sitePermissionsSettingsLocation">Τοποθεσία</string>
     <string name="sitePermissionsSettingsCamera">Κάμερα</string>
     <string name="sitePermissionsSettingsMicrophone">Μικρόφωνο</string>
+    <string name="sitePermissionsSettingsDRM">DRM</string>
     <string name="sitePermissionsSettingsAllowedSitesTitle">Διαχείριση ιστότοπων</string>
     <string name="sitePermissionsSettingsEmptyText">Δεν υπάρχουν ακόμη ιστότοποι</string>
     <string name="sitePermissionsRemoveAllWebsitesSnackbarText">Τα δικαιώματα καταργήθηκαν για όλους τους ιστότοπους</string>
