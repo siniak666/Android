@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Svetainės gali naudoti jūsų kamerą ir mikrofoną tik tada, jei leisite „DuckDuckGo“ prašyti prieigos.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Atidaryti nustatymus</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Atšaukti</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Suteikti %1$s leidimą naudotis DRM programine įranga savo įrenginyje?</string>
+    <string name="drmSiteDialogSubtitle">Skaitmeninių teisių valdymo programinė įranga reikalinga norint atkurti apsaugotą medijos turinį, bet taip pat suteikia prieigą prie įrenginio identifikatorių. Suteikite leidimą tik toms svetainėms, kurioms patikite šiuos duomenis. Leidimus bet kada galite tvarkyti nustatymuose. <annotation type="drm_learn_more_link">Sužinokite daugiau</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Visada</string>
+    <string name="drmSiteDialogAllowOnce">Tik šiam seansui</string>
+    <string name="drmSiteDialogDenyAlways">Visada atsisakyti</string>
+    <string name="drmSiteDialogDenyOnce">Atsisakyti šiam seansui</string>
 </resources>
