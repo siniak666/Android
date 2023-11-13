@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Saidid saavad sinu kaamerat ja mikrofoni kasutada ainult siis, kui lubad DuckDuckGo’l küsida sellele juurdepääsu.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Ava sätted</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Tühista</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Kas anda saidile %1$s luba juurdepääsuks sinu seadme DRM-i tarkvarale?</string>
+    <string name="drmSiteDialogSubtitle">Digitaalsete õiguste haldamise tarkvara on vajalik kaitstud meediasisu esitamiseks, kuid see võimaldab ka juurdepääsu seadme identifikaatoritele. Anna luba ainult saitidele, mida sa usaldad. Saad õigusi igal ajal seadetes hallata. <annotation type="drm_learn_more_link">Lisateave</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Alati</string>
+    <string name="drmSiteDialogAllowOnce">Ainult selle seansi jaoks</string>
+    <string name="drmSiteDialogDenyAlways">Keela alati</string>
+    <string name="drmSiteDialogDenyOnce">Keela selle seansi jaoks</string>
 </resources>
