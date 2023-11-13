@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Les sites ne peuvent utiliser votre appareil photo et votre micro que si vous autorisez DuckDuckGo à demander l\'accès.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Ouvrir les paramètres</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Annuler</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Autoriser %1$s à accéder au logiciel DRM de votre appareil ?</string>
+    <string name="drmSiteDialogSubtitle">Le logiciel de gestion des droits numériques est nécessaire pour lire du contenu multimédia protégé, mais il permet également d\'accéder aux identifiants des appareils. N\'accordez l\'autorisation d\'accès à ces données qu\'aux sites auxquels vous faites confiance. Vous pouvez gérer les autorisations à tout moment dans Paramètres. <annotation type="drm_learn_more_link">En savoir plus</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Toujours</string>
+    <string name="drmSiteDialogAllowOnce">Seulement pour cette session</string>
+    <string name="drmSiteDialogDenyAlways">Toujours refuser</string>
+    <string name="drmSiteDialogDenyOnce">Refuser pour cette session</string>
 </resources>
