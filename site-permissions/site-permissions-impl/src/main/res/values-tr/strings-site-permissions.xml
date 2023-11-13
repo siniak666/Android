@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Siteler kameranızı ve mikrofonunuzu yalnızca DuckDuckGo\'nun erişim istemesine izin verirseniz kullanabilir.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Ayarları Aç</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">İptal</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Cihazınızdaki DRM (Dijital Haklar Yönetimi) yazılımına erişmek için %1$s sitesine izin verilsin mi?</string>
+    <string name="drmSiteDialogSubtitle">Dijital Haklar Yönetimi yazılımı, korumalı medya içeriğini yürütmek için gereklidir, ancak aynı zamanda cihaz tanımlayıcılara erişim sağlar. Bu veriler için yalnızca güvendiğiniz sitelere izin verin. İzinleri istediğiniz zaman Ayarlar\'dan yönetebilirsiniz. <annotation type="drm_learn_more_link">Daha Fazla Bilgi</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Her zaman</string>
+    <string name="drmSiteDialogAllowOnce">Yalnızca Bu Oturum için</string>
+    <string name="drmSiteDialogDenyAlways">Her Zaman Reddet</string>
+    <string name="drmSiteDialogDenyOnce">Bu Oturum için Reddet</string>
 </resources>

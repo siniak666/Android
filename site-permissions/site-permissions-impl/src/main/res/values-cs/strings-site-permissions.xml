@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Weby můžou používat tvůj fotoaparát a mikrofon, jen když službě DuckDuckGo povolíš žádat o přístup.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Otevřít nastavení</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Zrušit</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Udělit stránce %1$s oprávnění k přístupu k softwaru DRM na tvém zařízení?</string>
+    <string name="drmSiteDialogSubtitle">Software DRM (tedy software pro správu digitálních oprávnění) je nutný k přehrávání chráněného mediálního obsahu, poskytuje ale taky přístup k identifikátorům zařízení. Povolení je vhodné udělit jen stránkám, kterým důvěřuješ. Oprávnění můžeš kdykoli spravovat v Nastaveních. <annotation type="drm_learn_more_link">Další informace</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Vždy</string>
+    <string name="drmSiteDialogAllowOnce">Pouze pro tuto relaci</string>
+    <string name="drmSiteDialogDenyAlways">Vždy odmítnout</string>
+    <string name="drmSiteDialogDenyOnce">Odmítnout pro tuto relaci</string>
 </resources>
