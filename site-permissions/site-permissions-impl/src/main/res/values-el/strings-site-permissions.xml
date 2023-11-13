@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Οι ιστότοποι μπορούν να χρησιμοποιούν την κάμερα και το μικρόφωνό σας μόνο εάν επιτρέψετε στο DuckDuckGo να αιτηθεί πρόσβαση.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Άνοιγμα ρυθμίσεων</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Ακύρωση</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Χορήγηση %1$s δικαιώματος για πρόσβαση στο λογισμικό DRM στη συσκευή σας;</string>
+    <string name="drmSiteDialogSubtitle">Το λογισμικό Διαχείριση ψηφιακών δικαιωμάτων απαιτείται για αναπαραγωγή προστατευμένου περιεχομένου πολυμέσων, ωστόσο παρέχει επίσης πρόσβαση σε αναγνωριστικά συσκευών. Χορηγήστε άδεια μόνο σε ιστότοπους που εμπιστεύεστε για αυτά τα δεδομένα. Μπορείτε να διαχειριστείτε τα δικαιώματα οποιαδήποτε στιγμή από τις Ρυθμίσεις. <annotation type="drm_learn_more_link">Μάθετε περισσότερα</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Πάντα</string>
+    <string name="drmSiteDialogAllowOnce">Μόνο γι\' αυτή τη σύνδεση</string>
+    <string name="drmSiteDialogDenyAlways">Άρνηση για πάντα</string>
+    <string name="drmSiteDialogDenyOnce">Άρνηση γι\' αυτή τη σύνδεση</string>
 </resources>
