@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">A webhelyek csak akkor használhatják a kamerát és a mikrofont, ha engedélyezed, hogy a DuckDuckGo hozzáférést kérjen.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Beállítások megnyitása</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Mégsem</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Engedélyezed, hogy a(z) %1$s hozzáférjen az eszköz DRM-szoftveréhez?</string>
+    <string name="drmSiteDialogSubtitle">A digitális jogosultságokat kezelő szoftver a védett médiatartalmak lejátszásához szükséges, de az eszközazonosítókhoz is hozzáférést biztosít. Csak olyan webhelyeknek adj engedélyt ezekhez az adatokhoz, amelyekben megbízol. Az engedélyek bármikor kezelhetők a Beállításokban. <annotation type="drm_learn_more_link">További tudnivalók</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Mindig</string>
+    <string name="drmSiteDialogAllowOnce">Csak erre a munkamenetre</string>
+    <string name="drmSiteDialogDenyAlways">Mindig megtagad</string>
+    <string name="drmSiteDialogDenyOnce">Megtagad erre a munkamenetre</string>
 </resources>
