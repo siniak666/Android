@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Os sites só podem utilizar a tua câmara e microfone se autorizares o DuckDuckGo a pedir acesso.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Abrir Definições</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Cancelar</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Conceder permissão a %1$s para aceder ao software DRM no teu dispositivo?</string>
+    <string name="drmSiteDialogSubtitle">O software de gestão de direitos digitais é necessário para reproduzir conteúdo multimédia protegido, mas também fornece acesso a identificadores do dispositivo. Concede permissão apenas a sites de confiança. Podes gerir as permissões em qualquer altura nas Definições. <annotation type="drm_learn_more_link">Sabe mais</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Sempre</string>
+    <string name="drmSiteDialogAllowOnce">Apenas para esta sessão</string>
+    <string name="drmSiteDialogDenyAlways">Negar sempre</string>
+    <string name="drmSiteDialogDenyOnce">Negar para esta sessão</string>
 </resources>
