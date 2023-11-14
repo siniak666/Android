@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Nettsteder kan bare bruke kameraet og mikrofonen din hvis du lar DuckDuckGo be om tilgang.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Åpne innstillinger</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Avbryt</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Vil du gi %1$s tillatelse til å få tilgang til DRA-programvare på enheten din?</string>
+    <string name="drmSiteDialogSubtitle">Programvare for digital rettighetsadministrasjon er nødvendig for å spille av beskyttet medieinnhold, men gir også tilgang til enhetsidentifikatorer. Gi bare tillatelse til nettsteder du stoler på med disse dataene. Du kan administrere tillatelser når som helst i Innstillinger. <annotation type="drm_learn_more_link">Les mer</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Alltid</string>
+    <string name="drmSiteDialogAllowOnce">Kun for denne økten</string>
+    <string name="drmSiteDialogDenyAlways">Aldri tillat</string>
+    <string name="drmSiteDialogDenyOnce">Ikke tillat for denne økten</string>
 </resources>
