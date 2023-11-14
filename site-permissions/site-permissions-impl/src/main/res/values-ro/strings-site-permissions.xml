@@ -35,4 +35,12 @@
     <string name="systemPermissionDialogCameraAndAudioDeniedContent">Site-urile îți pot utiliza camera și microfonul numai dacă permiți ca DuckDuckGo să solicite accesul.</string>
     <string name="systemPermissionsDeniedDialogPositiveButton">Deschide Setări</string>
     <string name="systemPermissionsDeniedDialogNegativeButton">Anulează</string>
+
+    <!-- DRM Permission -->
+    <string name="drmSiteDialogTitle" instruction="Placeholder is the name of a website">Acorzi %1$s permisiunea de a accesa software-ul DRM pe dispozitivul tău?</string>
+    <string name="drmSiteDialogSubtitle">Software-ul DRM este necesar pentru a reda conținut media protejat, dar oferă, de asemenea, acces la identificatorii dispozitivelor. Acordă permisiunea de a utiliza aceste date numai site-urilor în care ai încredere. Poți gestiona oricând permisiunile din Setări. <annotation type="drm_learn_more_link">Află mai multe</annotation></string>
+    <string name="drmSiteDialogAllowAlways">Întotdeauna</string>
+    <string name="drmSiteDialogAllowOnce">Numai pentru această sesiune</string>
+    <string name="drmSiteDialogDenyAlways">Respinge întotdeauna</string>
+    <string name="drmSiteDialogDenyOnce">Respinge pentru această sesiune</string>
 </resources>
