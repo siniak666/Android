@@ -25,6 +25,7 @@ import com.duckduckgo.common.test.api.InMemorySharedPreferences
 import com.duckduckgo.common.utils.plugins.PluginPoint
 import com.duckduckgo.feature.toggles.api.FeatureExceptions.FeatureException
 import com.duckduckgo.privacy.config.api.PrivacyConfigCallbackPlugin
+import com.duckduckgo.privacy.config.api.PrivacyConfigUpdateListener
 import com.duckduckgo.privacy.config.api.PrivacyFeatureName
 import com.duckduckgo.privacy.config.api.PrivacyFeaturePlugin
 import com.duckduckgo.privacy.config.impl.models.JsonPrivacyConfig

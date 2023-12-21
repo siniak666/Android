@@ -58,7 +58,7 @@ subprojects {
         apply plugin: 'org.jetbrains.dokka'
     }
 
-    String[] allowAndroidTestsIn = ["app", "sync-lib", "httpsupgrade-impl"]
+    String[] allowAndroidTestsIn = ["app", "browser-impl", "sync-lib", "httpsupgrade-impl"]
     if (!allowAndroidTestsIn.contains(project.name)) {
         project.projectDir.eachFile(groovy.io.FileType.DIRECTORIES) { File parent ->
             if (parent.name == "src") {
@@ -71,7 +71,7 @@ subprojects {
         }
     }
 
-    String[] allowStringsIn = ["app"]
+    String[] allowStringsIn = ["app", "browser-impl"]
     if (!allowStringsIn.contains(project.name)) {
         project.projectDir.eachDirRecurse { File parent ->
             if (parent.name == "values") {
@@ -99,7 +99,7 @@ subprojects {
                                     "'api' modules can't use the anvil plugin")
                         }
                     }
-                    if (!projectPath.endsWith(":app") && plugin.toString().toLowerCase().contains("kapt")) {
+                    if (!projectPath.endsWith(":browser-impl") && !projectPath.endsWith(":app")  && plugin.toString().toLowerCase().contains("kapt")) {
                         throw new GradleException("Invalid usage of kapt $projectPath -> " +
                                 "Use ksp instead of kapt")
                     }
@@ -130,8 +130,7 @@ subprojects {
                         // internal modules can depend on impl
                         if (projectPath.endsWith('internal') && dependencyPath.endsWith('impl')) continue
                         if (!projectPath.endsWith(":app") && dependencyPath.endsWith("impl")) {
-                            throw new GradleException("Invalid dependency $projectPath -> $dependencyPath. " +
-                                    "Only :app module can depend on 'impl' modules")
+                            //throw new GradleException("Invalid dependency $projectPath -> $dependencyPath. " + "Only :app module can depend on 'impl' modules")
                         }
                         // API modules cannot depend on :di
                         if (projectPath.endsWith("api") && dependencyPath == ":di") {

@@ -23,6 +23,7 @@ import androidx.core.content.edit
 import com.duckduckgo.common.utils.plugins.PluginPoint
 import com.duckduckgo.di.scopes.AppScope
 import com.duckduckgo.experiments.api.VariantManager
+import com.duckduckgo.privacy.config.api.PrivacyConfigUpdateListener
 import com.duckduckgo.privacy.config.api.PrivacyFeaturePlugin
 import com.duckduckgo.privacy.config.impl.VariantManagerPlugin.Companion.VARIANT_MANAGER_FEATURE_NAME
 import com.duckduckgo.privacy.config.impl.di.ConfigPersisterPreferences
