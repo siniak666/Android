@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name="com.duckduckgo.app.global.DuckDuckGoApplication"
+        android:name="com.duckduckgo.app.DuckDuckGoApplication"
         android:backupAgent="com.duckduckgo.app.backup.agent.impl.DuckDuckGoBackupAgent"
         android:fullBackupOnly="false"
         android:icon="${appIcon}"

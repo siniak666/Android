@@ -27,6 +27,7 @@ import dagger.Provides
 import dagger.SingleInstanceIn
 
 @Module
+@ContributesTo(AppScope::class)
 abstract class ApplicationModule {
 
     @SingleInstanceIn(AppScope::class)

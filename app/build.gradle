@@ -318,6 +318,29 @@ dependencies {
     implementation project(':backup-agent-api')
     implementation project(':backup-agent-impl')
 
+    implementation KotlinX.coroutines.core
+    implementation AndroidX.lifecycle.process
+    implementation JakeWharton.timber
+    implementation "io.reactivex.rxjava2:rxjava:_"
+    implementation "io.reactivex.rxjava2:rxandroid:_"
+    implementation "com.jakewharton.threetenabp:threetenabp:_"
+    implementation Square.okHttp3.okHttp
+    implementation "com.squareup.okhttp3:okhttp-tls:_"
+    // Added these below as otherwise dagger-generated code will not find type reference
+    implementation AndroidX.webkit
+    internalImplementation "com.facebook.flipper:flipper:_"
+    implementation Square.retrofit2.retrofit
+    implementation Square.moshi
+    implementation AndroidX.work.runtimeKtx
+    implementation AndroidX.appCompat
+    implementation Google.android.material
+    implementation "androidx.localbroadcastmanager:localbroadcastmanager:_"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:_"
+    implementation "com.github.bumptech.glide:okhttp3-integration:_"
+    ksp "com.github.bumptech.glide:ksp:_"
+
     kapt Google.dagger.compiler
     implementation Google.dagger
 }

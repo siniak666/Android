@@ -17,6 +17,7 @@
 package com.duckduckgo.widget
 
 import android.app.PendingIntent
+import android.app.Service
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
@@ -25,13 +26,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.RemoteViews
 import com.duckduckgo.browser.impl.R
-import com.duckduckgo.app.global.DuckDuckGoApplication
 import com.duckduckgo.app.global.install.AppInstallStore
 import com.duckduckgo.app.pixels.AppPixelName.WIDGETS_ADDED
 import com.duckduckgo.app.pixels.AppPixelName.WIDGETS_DELETED
 import com.duckduckgo.app.statistics.pixels.Pixel
 import com.duckduckgo.app.systemsearch.SystemSearchActivity
 import com.duckduckgo.app.widget.ui.AppWidgetCapabilities
+import dagger.android.AndroidInjection
 import javax.inject.Inject
 
 class SearchWidgetLight : SearchWidget(R.layout.search_widget_light)
@@ -59,8 +60,9 @@ open class SearchWidget(val layoutId: Int = R.layout.search_widget_dark) : AppWi
     }
 
     private fun inject(context: Context) {
-        val application = context.applicationContext as DuckDuckGoApplication
-        application.daggerAppComponent.inject(this)
+        AndroidInjection.inject(this as Service)
+        // val application = context.applicationContext as DuckDuckGoApplication
+        // application.daggerAppComponent.inject(this)
     }
 
     override fun onEnabled(context: Context) {

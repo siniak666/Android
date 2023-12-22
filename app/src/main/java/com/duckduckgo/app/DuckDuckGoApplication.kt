@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 DuckDuckGo
+ * Copyright (c) 2023 DuckDuckGo
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package com.duckduckgo.app.global
+package com.duckduckgo.app
 
 import androidx.lifecycle.ProcessLifecycleOwner
-import com.duckduckgo.app.browser.BuildConfig
-import com.duckduckgo.app.di.AppComponent
 import com.duckduckgo.app.di.AppCoroutineScope
-import com.duckduckgo.app.di.DaggerAppComponent
+import com.duckduckgo.app.DaggerAppComponent
+import com.duckduckgo.app.global.MultiProcessApplication
+import com.duckduckgo.app.global.currentProcessName
+import com.duckduckgo.app.global.runInSecondaryProcessNamed
 import com.duckduckgo.app.lifecycle.MainProcessLifecycleObserver
 import com.duckduckgo.app.lifecycle.VpnProcessLifecycleObserver
 import com.duckduckgo.app.referral.AppInstallationReferrerStateListener
@@ -38,7 +39,6 @@ import javax.inject.Inject
 import kotlinx.coroutines.*
 import org.threeten.bp.zone.ZoneRulesProvider
 import timber.log.Timber
-import kotlin.text.Typography.dagger
 
 private const val VPN_PROCESS_NAME = "vpn"
 

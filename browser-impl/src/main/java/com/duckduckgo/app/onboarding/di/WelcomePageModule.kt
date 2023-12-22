@@ -23,10 +23,13 @@ import com.duckduckgo.app.global.install.AppInstallStore
 import com.duckduckgo.app.onboarding.ui.page.WelcomePageViewModelFactory
 import com.duckduckgo.app.statistics.pixels.Pixel
 import com.duckduckgo.appbuildconfig.api.AppBuildConfig
+import com.duckduckgo.di.scopes.AppScope
+import com.squareup.anvil.annotations.ContributesTo
 import dagger.Module
 import dagger.Provides
 
 @Module
+@ContributesTo(AppScope::class)
 class WelcomePageModule {
 
     @Provides
@@ -35,7 +38,7 @@ class WelcomePageModule {
         context: Context,
         pixel: Pixel,
         defaultRoleBrowserDialog: DefaultRoleBrowserDialog,
-    ) = WelcomePageViewModelFactory(appInstallStore, context, pixel, defaultRoleBrowserDialog)
+    ): WelcomePageViewModelFactory = WelcomePageViewModelFactory(appInstallStore, context, pixel, defaultRoleBrowserDialog)
 
     @Provides
     fun defaultRoleBrowserDialog(

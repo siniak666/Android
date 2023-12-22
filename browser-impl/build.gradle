@@ -17,7 +17,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-kapt'
+//    id 'kotlin-kapt'
     id 'com.google.devtools.ksp' version "$ksp_version"
     id 'com.squareup.anvil'
 }
@@ -38,6 +38,9 @@ android {
         play {
             dimension "store"
         }
+    }
+    anvil {
+        generateDaggerFactories = true // default is false
     }
 }
 
@@ -117,7 +120,7 @@ dependencies {
     implementation project(':vpn-impl')
     implementation project(':vpn-api')
     implementation project(':vpn-store')
-    internalImplementation project(':vpn-internal')
+//    internalImplementation project(':vpn-internal')
 
     implementation project(':feature-toggles-api')
     testImplementation project(':feature-toggles-test')
@@ -246,7 +249,6 @@ dependencies {
     implementation AndroidX.swipeRefreshLayout
     implementation AndroidX.webkit
     implementation Square.okHttp3.okHttp
-    implementation "com.squareup.okhttp3:okhttp-tls:_"
     implementation Square.retrofit2.retrofit
     implementation Square.retrofit2.converter.moshi
     implementation "com.squareup.moshi:moshi-kotlin:_"
@@ -294,13 +296,11 @@ dependencies {
     implementation AndroidX.work.rxJava2
 
     // Dagger
-    kapt Google.dagger.compiler
+//    kapt Google.dagger.compiler
     implementation Google.dagger
 
     // Glide
     implementation "com.github.bumptech.glide:glide:_"
-    implementation "com.github.bumptech.glide:okhttp3-integration:_"
-    ksp "com.github.bumptech.glide:ksp:_"
 
     // Lottie
     implementation "com.airbnb.android:lottie:_"

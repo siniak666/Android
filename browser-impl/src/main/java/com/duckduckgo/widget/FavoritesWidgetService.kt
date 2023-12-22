@@ -16,6 +16,7 @@
 
 package com.duckduckgo.widget
 
+import android.app.Service
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
@@ -29,11 +30,11 @@ import androidx.core.net.toUri
 import com.duckduckgo.app.browser.BrowserActivity
 import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.browser.favicon.FaviconManager
-import com.duckduckgo.app.global.DuckDuckGoApplication
 import com.duckduckgo.app.global.view.generateDefaultDrawable
 import com.duckduckgo.common.utils.domain
 import com.duckduckgo.mobile.android.R as CommonR
 import com.duckduckgo.savedsites.api.SavedSitesRepository
+import dagger.android.AndroidInjection
 import javax.inject.Inject
 import kotlinx.coroutines.runBlocking
 
@@ -190,8 +191,9 @@ class FavoritesWidgetService : RemoteViewsService() {
         }
 
         private fun inject(context: Context) {
-            val application = context.applicationContext as DuckDuckGoApplication
-            application.daggerAppComponent.inject(this)
+            AndroidInjection.inject(this as Service)
+            // val application = context.applicationContext as DuckDuckGoApplication
+            // application.daggerAppComponent.inject(this)
         }
     }
 }

@@ -76,6 +76,7 @@ import com.duckduckgo.privacy.config.api.Gpc
 import com.duckduckgo.privacy.config.api.TrackingParameters
 import com.duckduckgo.request.filterer.api.RequestFilterer
 import com.duckduckgo.user.agent.api.UserAgentProvider
+import com.squareup.anvil.annotations.ContributesTo
 import dagger.Module
 import dagger.Provides
 import dagger.SingleInstanceIn
@@ -84,6 +85,7 @@ import javax.inject.Named
 import kotlinx.coroutines.CoroutineScope
 
 @Module
+@ContributesTo(AppScope::class)
 class BrowserModule {
 
     @Provides

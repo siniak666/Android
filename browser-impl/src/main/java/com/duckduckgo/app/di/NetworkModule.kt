@@ -32,6 +32,7 @@ import com.duckduckgo.common.utils.plugins.pixel.PixelInterceptorPlugin
 import com.duckduckgo.di.scopes.AppScope
 import com.duckduckgo.experiments.api.VariantManager
 import com.duckduckgo.user.agent.api.UserAgentProvider
+import com.squareup.anvil.annotations.ContributesTo
 import com.squareup.moshi.Moshi
 import dagger.Lazy
 import dagger.Module
@@ -55,6 +56,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 import timber.log.Timber
 
 @Module
+@ContributesTo(AppScope::class)
 class NetworkModule {
 
     @Provides

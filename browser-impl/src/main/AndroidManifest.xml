@@ -218,7 +218,7 @@
             android:theme="@style/Theme.DuckDuckGo.Light" />
 
         <activity
-            android:name=".BrowserActivity"
+            android:name="com.duckduckgo.app.browser.BrowserActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|navigation|keyboard"
             android:exported="true"
             android:label="@string/appDescription"
@@ -296,7 +296,7 @@
             android:name="com.duckduckgo.app.settings.SettingsActivity"
             android:exported="true"
             android:label="@string/settingsActivityTitle"
-            android:parentActivityName=".BrowserActivity">
+            android:parentActivityName="com.duckduckgo.app.browser.BrowserActivity">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
@@ -311,13 +311,13 @@
             android:exported="false"
             android:label="@string/brokenSiteHeading"
             android:windowSoftInputMode="adjustResize"
-            android:parentActivityName=".BrowserActivity" />
+            android:parentActivityName="com.duckduckgo.app.browser.BrowserActivity" />
         <activity
             android:name="com.duckduckgo.app.survey.ui.SurveyActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|navigation|keyboard"
             android:exported="false"
             android:label="@string/surveyActivityTitle"
-            android:parentActivityName=".BrowserActivity"
+            android:parentActivityName="com.duckduckgo.app.browser.BrowserActivity"
             android:theme="@style/Theme.DuckDuckGo.Survey" />
         <activity
             android:name="com.duckduckgo.app.widget.ui.AddWidgetInstructionsActivity"
@@ -333,7 +333,7 @@
             android:name="com.duckduckgo.app.bookmarks.ui.BookmarksActivity"
             android:exported="false"
             android:label="@string/bookmarksActivityTitle"
-            android:parentActivityName=".BrowserActivity" />
+            android:parentActivityName="com.duckduckgo.app.browser.BrowserActivity" />
         <activity
             android:name="com.duckduckgo.app.fire.fireproofwebsite.ui.FireproofWebsitesActivity"
             android:exported="false"
@@ -434,13 +434,13 @@
             android:name="com.duckduckgo.voice.impl.listeningmode.VoiceSearchActivity"
             android:exported="false"
             android:label="@string/voiceSearchTitle"
-            android:parentActivityName=".BrowserActivity" />
+            android:parentActivityName="com.duckduckgo.app.browser.BrowserActivity" />
 
         <activity
             android:name="com.duckduckgo.app.downloads.DownloadsActivity"
             android:exported="false"
             android:label="@string/downloadsActivityTitle"
-            android:parentActivityName=".BrowserActivity" />
+            android:parentActivityName="com.duckduckgo.app.browser.BrowserActivity" />
 
         <service
             android:name="com.duckduckgo.app.job.AppConfigurationJobService"

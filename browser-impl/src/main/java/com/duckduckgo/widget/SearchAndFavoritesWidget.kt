@@ -17,6 +17,7 @@
 package com.duckduckgo.widget
 
 import android.app.PendingIntent
+import android.app.Service
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
@@ -31,11 +32,11 @@ import com.duckduckgo.app.browser.BrowserActivity
 import com.duckduckgo.app.browser.BrowserActivity.Companion.FAVORITES_ONBOARDING_EXTRA
 import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.di.AppCoroutineScope
-import com.duckduckgo.app.global.DuckDuckGoApplication
 import com.duckduckgo.app.systemsearch.SystemSearchActivity
 import com.duckduckgo.appbuildconfig.api.AppBuildConfig
 import com.duckduckgo.common.utils.DispatcherProvider
 import com.duckduckgo.widget.FavoritesWidgetService.Companion.THEME_EXTRAS
+import dagger.android.AndroidInjection
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -294,7 +295,8 @@ class SearchAndFavoritesWidget : AppWidgetProvider() {
     }
 
     private fun inject(context: Context) {
-        val application = context.applicationContext as DuckDuckGoApplication
-        application.daggerAppComponent.inject(this)
+        AndroidInjection.inject(this as Service)
+        // val application = context.applicationContext as DuckDuckGoApplication
+        // application.daggerAppComponent.inject(this)
     }
 }

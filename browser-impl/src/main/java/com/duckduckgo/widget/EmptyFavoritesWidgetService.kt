@@ -16,13 +16,14 @@
 
 package com.duckduckgo.widget
 
+import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.duckduckgo.browser.impl.R
-import com.duckduckgo.app.global.DuckDuckGoApplication
 import com.duckduckgo.savedsites.api.SavedSitesRepository
+import dagger.android.AndroidInjection
 import javax.inject.Inject
 
 class EmptyFavoritesWidgetService : RemoteViewsService() {
@@ -85,8 +86,9 @@ class EmptyFavoritesWidgetService : RemoteViewsService() {
         }
 
         private fun inject(context: Context) {
-            val application = context.applicationContext as DuckDuckGoApplication
-            application.daggerAppComponent.inject(this)
+            AndroidInjection.inject(this as Service)
+            // val application = context.applicationContext as DuckDuckGoApplication
+            // application.daggerAppComponent.inject(this)
         }
     }
 }

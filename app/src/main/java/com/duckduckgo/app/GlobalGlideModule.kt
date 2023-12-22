@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 DuckDuckGo
+ * Copyright (c) 2023 DuckDuckGo
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package com.duckduckgo.app.global.image
+package com.duckduckgo.app
 
 import android.content.Context
+import com.duckduckgo.app.abc.BuildConfig
 import android.os.Build
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Registry
@@ -24,7 +25,6 @@ import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.integration.okhttp3.OkHttpUrlLoader
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.module.AppGlideModule
-import com.duckduckgo.app.browser.BuildConfig
 import com.duckduckgo.app.browser.certificates.rootstore.IsrgRootX1
 import com.duckduckgo.app.browser.certificates.rootstore.IsrgRootX2
 import java.io.InputStream

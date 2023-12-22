@@ -31,6 +31,7 @@ import com.duckduckgo.app.usage.search.SearchCountDao
 import com.duckduckgo.appbuildconfig.api.AppBuildConfig
 import com.duckduckgo.common.utils.DispatcherProvider
 import com.duckduckgo.di.scopes.AppScope
+import com.squareup.anvil.annotations.ContributesTo
 import dagger.Module
 import dagger.Provides
 import dagger.SingleInstanceIn
@@ -39,6 +40,7 @@ import javax.inject.Named
 import kotlinx.coroutines.CoroutineScope
 
 @Module
+@ContributesTo(AppScope::class)
 class RatingModule {
 
     @SingleInstanceIn(AppScope::class)

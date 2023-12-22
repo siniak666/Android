@@ -31,11 +31,13 @@ import com.duckduckgo.app.privacy.db.PrivacyProtectionCountDao
 import com.duckduckgo.app.settings.db.SettingsDataStore
 import com.duckduckgo.common.utils.plugins.PluginPoint
 import com.duckduckgo.di.scopes.AppScope
+import com.squareup.anvil.annotations.ContributesTo
 import dagger.Module
 import dagger.Provides
 import dagger.SingleInstanceIn
 
-@Module(includes = [DaoModule::class])
+@Module
+@ContributesTo(AppScope::class)
 object NotificationModule {
 
     @Provides

@@ -49,6 +49,7 @@ import com.duckduckgo.di.scopes.AppScope
 import com.duckduckgo.savedsites.api.SavedSitesRepository
 import com.duckduckgo.site.permissions.api.SitePermissionsManager
 import com.duckduckgo.sync.api.DeviceSyncState
+import com.squareup.anvil.annotations.ContributesTo
 import dagger.Lazy
 import dagger.Module
 import dagger.Provides
@@ -56,6 +57,7 @@ import dagger.SingleInstanceIn
 import dagger.multibindings.IntoSet
 
 @Module
+@ContributesTo(AppScope::class)
 object PrivacyModule {
 
     @Provides

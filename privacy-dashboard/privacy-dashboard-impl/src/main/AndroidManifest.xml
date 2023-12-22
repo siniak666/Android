@@ -23,6 +23,6 @@
             android:label="@string/privacyDashboardActivityTitle"
             android:exported="false"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-            android:parentActivityName=".BrowserActivity" />
+            android:parentActivityName="com.duckduckgo.app.browser.BrowserActivity" />
     </application>
 </manifest>

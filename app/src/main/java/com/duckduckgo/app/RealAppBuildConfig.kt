@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.duckduckgo.app.global
+package com.duckduckgo.app
 
 import android.os.Build
 import com.duckduckgo.app.abc.BuildConfig
@@ -23,23 +23,10 @@ import com.duckduckgo.appbuildconfig.api.BuildFlavor
 import com.duckduckgo.di.scopes.AppScope
 import com.duckduckgo.experiments.api.VariantManager
 import com.squareup.anvil.annotations.ContributesBinding
-import com.squareup.anvil.annotations.ContributesTo
 import dagger.Lazy
-import dagger.Module
-import dagger.Provides
 import java.lang.IllegalStateException
 import java.util.*
 import javax.inject.Inject
-
-@Module
-@ContributesTo(AppScope::class)
-object RealAppBuildConfigModule {
-
-    @Provides
-    fun providesRealAppBuildConfig(
-        variantManager: Lazy<VariantManager>,
-    ): AppBuildConfig = RealAppBuildConfig(variantManager)
-}
 
 @ContributesBinding(AppScope::class)
 class RealAppBuildConfig @Inject constructor(
