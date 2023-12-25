@@ -27,9 +27,9 @@ import android.text.style.URLSpan
 import android.view.View
 import android.widget.CompoundButton.OnCheckedChangeListener
 import com.duckduckgo.anvil.annotations.InjectWith
+import com.duckduckgo.browser.api.ui.BrowserScreens.WebViewActivityWithParams
 import com.duckduckgo.browser.impl.R
 import com.duckduckgo.browser.impl.databinding.ActivityGlobalPrivacyControlBinding
-import com.duckduckgo.browser.api.ui.BrowserScreens.WebViewActivityWithParams
 import com.duckduckgo.common.ui.DuckDuckGoActivity
 import com.duckduckgo.common.ui.viewbinding.viewBinding
 import com.duckduckgo.common.utils.extensions.html

@@ -24,11 +24,11 @@ import android.widget.ImageView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
+import com.duckduckgo.app.browser.favicon.FaviconManager
+import com.duckduckgo.app.privacy.model.UserAllowListedDomain
 import com.duckduckgo.browser.impl.R
 import com.duckduckgo.browser.impl.databinding.ViewListItemDescriptionBinding
 import com.duckduckgo.browser.impl.databinding.ViewListItemEmptyHintBinding
-import com.duckduckgo.app.browser.favicon.FaviconManager
-import com.duckduckgo.app.privacy.model.UserAllowListedDomain
 import com.duckduckgo.common.ui.menu.PopupMenu
 import com.duckduckgo.mobile.android.databinding.RowOneLineListItemBinding
 import com.duckduckgo.mobile.android.databinding.ViewSectionHeaderBinding

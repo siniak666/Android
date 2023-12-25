@@ -28,7 +28,6 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.SingleInstanceIn
 import dagger.android.AndroidInjector
-import javax.inject.Named
 import kotlinx.coroutines.CoroutineScope
 // import retrofit2.Retrofit
 

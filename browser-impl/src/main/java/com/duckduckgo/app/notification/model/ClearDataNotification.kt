@@ -19,7 +19,6 @@ package com.duckduckgo.app.notification.model
 import android.app.PendingIntent
 import android.content.Context
 import android.os.Bundle
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.di.AppCoroutineScope
 import com.duckduckgo.app.notification.NotificationRegistrar
 import com.duckduckgo.app.notification.TaskStackBuilderFactory
@@ -29,6 +28,7 @@ import com.duckduckgo.app.settings.SettingsActivity
 import com.duckduckgo.app.settings.clear.ClearWhatOption
 import com.duckduckgo.app.settings.db.SettingsDataStore
 import com.duckduckgo.app.statistics.pixels.Pixel
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.common.utils.DispatcherProvider
 import com.duckduckgo.di.scopes.AppScope
 import com.duckduckgo.mobile.android.R as CommonR

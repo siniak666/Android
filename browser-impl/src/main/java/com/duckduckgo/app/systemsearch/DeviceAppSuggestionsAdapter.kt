@@ -21,8 +21,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.UiThread
 import androidx.recyclerview.widget.RecyclerView
-import com.duckduckgo.browser.impl.databinding.ItemDeviceAppSuggestionBinding
 import com.duckduckgo.app.systemsearch.DeviceAppSuggestionsAdapter.DeviceAppViewHolder
+import com.duckduckgo.browser.impl.databinding.ItemDeviceAppSuggestionBinding
 
 class DeviceAppSuggestionsAdapter(
     private val clickListener: (DeviceApp) -> Unit,

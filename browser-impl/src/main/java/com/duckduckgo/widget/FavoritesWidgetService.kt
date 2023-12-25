@@ -28,9 +28,9 @@ import android.widget.RemoteViewsService
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
 import com.duckduckgo.app.browser.BrowserActivity
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.browser.favicon.FaviconManager
 import com.duckduckgo.app.global.view.generateDefaultDrawable
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.common.utils.domain
 import com.duckduckgo.mobile.android.R as CommonR
 import com.duckduckgo.savedsites.api.SavedSitesRepository

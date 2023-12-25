@@ -37,13 +37,13 @@ import com.duckduckgo.app.bookmarks.ui.bookmarkfolders.BookmarkFoldersActivity.C
 import com.duckduckgo.app.bookmarks.ui.bookmarkfolders.BookmarkFoldersAdapter
 import com.duckduckgo.app.bookmarks.ui.bookmarkfolders.EditBookmarkFolderDialogFragment
 import com.duckduckgo.app.browser.BrowserActivity
+import com.duckduckgo.app.browser.favicon.FaviconManager
+import com.duckduckgo.app.global.view.DividerAdapter
+import com.duckduckgo.browser.api.ui.BrowserScreens.BookmarksScreenNoParams
 import com.duckduckgo.browser.impl.R
 import com.duckduckgo.browser.impl.R.plurals
 import com.duckduckgo.browser.impl.databinding.ActivityBookmarksBinding
 import com.duckduckgo.browser.impl.databinding.ContentBookmarksBinding
-import com.duckduckgo.app.browser.favicon.FaviconManager
-import com.duckduckgo.app.global.view.DividerAdapter
-import com.duckduckgo.browser.api.ui.BrowserScreens.BookmarksScreenNoParams
 import com.duckduckgo.common.ui.DuckDuckGoActivity
 import com.duckduckgo.common.ui.view.SearchBar
 import com.duckduckgo.common.ui.view.dialog.ActionBottomSheetDialog.EventListener

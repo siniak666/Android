@@ -20,7 +20,6 @@ import androidx.annotation.UiThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.test.platform.app.InstrumentationRegistry
-import com.duckduckgo.app.AppComponent
 import com.duckduckgo.app.global.DuckDuckGoApplication
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit

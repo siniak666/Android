@@ -17,7 +17,6 @@
 package com.duckduckgo.app.feedback.ui.negative
 
 import androidx.annotation.StringRes
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.feedback.ui.negative.FeedbackType.CustomizationSubReasons
 import com.duckduckgo.app.feedback.ui.negative.FeedbackType.CustomizationSubReasons.*
 import com.duckduckgo.app.feedback.ui.negative.FeedbackType.MainReason
@@ -30,6 +29,7 @@ import com.duckduckgo.app.feedback.ui.negative.FeedbackType.PerformanceSubReason
 import com.duckduckgo.app.feedback.ui.negative.FeedbackType.SearchNotGoodEnoughSubReasons
 import com.duckduckgo.app.feedback.ui.negative.FeedbackType.SearchNotGoodEnoughSubReasons.*
 import com.duckduckgo.app.feedback.ui.negative.FeedbackType.SubReason
+import com.duckduckgo.browser.impl.R
 
 fun MainReason.displayText(): FeedbackTypeDisplay.FeedbackTypeMainReasonDisplay? = FeedbackTypeDisplay.mainReasons[this]
 

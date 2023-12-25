@@ -20,8 +20,8 @@ import android.app.PendingIntent
 import android.content.Context
 import android.view.View
 import android.widget.RemoteViews
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.systemsearch.SystemSearchActivity
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.voice.api.VoiceSearchAvailability
 import javax.inject.Inject
 

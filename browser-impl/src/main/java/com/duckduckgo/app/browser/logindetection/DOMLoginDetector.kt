@@ -20,10 +20,10 @@ import android.content.Context
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import androidx.annotation.UiThread
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.browser.logindetection.LoginDetectionJavascriptInterface.Companion.JAVASCRIPT_INTERFACE_NAME
 import com.duckduckgo.app.fire.fireproofwebsite.ui.AutomaticFireproofSetting
 import com.duckduckgo.app.settings.db.SettingsDataStore
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.common.utils.getValidUrl
 import javax.inject.Inject
 import timber.log.Timber

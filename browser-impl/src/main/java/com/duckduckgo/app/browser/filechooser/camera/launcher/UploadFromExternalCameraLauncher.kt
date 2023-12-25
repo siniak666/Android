@@ -23,13 +23,13 @@ import android.net.Uri
 import android.provider.Settings
 import androidx.activity.result.ActivityResultCaller
 import androidx.activity.result.ActivityResultLauncher
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.browser.filechooser.camera.CameraCaptureResultHandler
 import com.duckduckgo.app.browser.filechooser.camera.launcher.UploadFromExternalCameraLauncher.CameraImageCaptureResult
 import com.duckduckgo.app.browser.filechooser.camera.permission.ExternalCameraSystemPermissionsHelper
 import com.duckduckgo.app.browser.filechooser.camera.postprocess.CameraCaptureDelayedDeleter
 import com.duckduckgo.app.browser.filechooser.camera.postprocess.CameraCaptureImageMover
 import com.duckduckgo.app.di.AppCoroutineScope
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.common.ui.view.dialog.TextAlertDialogBuilder
 import com.duckduckgo.common.utils.DispatcherProvider
 import com.duckduckgo.di.scopes.FragmentScope

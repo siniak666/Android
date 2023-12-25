@@ -24,7 +24,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.duckduckgo.anvil.annotations.ContributesViewModel
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.browser.defaultbrowsing.DefaultBrowserDetector
 import com.duckduckgo.app.pixels.AppPixelName.*
 import com.duckduckgo.app.settings.SettingsViewModel.NetPEntryState.Hidden
@@ -34,6 +33,7 @@ import com.duckduckgo.app.statistics.pixels.Pixel
 import com.duckduckgo.autoconsent.api.Autoconsent
 import com.duckduckgo.autofill.api.AutofillCapabilityChecker
 import com.duckduckgo.autofill.api.email.EmailManager
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.common.ui.view.listitem.CheckListItem
 import com.duckduckgo.common.ui.view.listitem.CheckListItem.CheckItemStatus
 import com.duckduckgo.common.utils.ConflatedJob

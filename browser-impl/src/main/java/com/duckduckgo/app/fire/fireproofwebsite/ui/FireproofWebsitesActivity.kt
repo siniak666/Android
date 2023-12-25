@@ -24,12 +24,12 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.core.text.HtmlCompat
 import com.duckduckgo.anvil.annotations.InjectWith
-import com.duckduckgo.browser.impl.R
-import com.duckduckgo.browser.impl.databinding.ActivityFireproofWebsitesBinding
 import com.duckduckgo.app.browser.favicon.FaviconManager
 import com.duckduckgo.app.fire.fireproofwebsite.data.FireproofWebsiteEntity
 import com.duckduckgo.app.fire.fireproofwebsite.data.website
 import com.duckduckgo.app.fire.fireproofwebsite.ui.AutomaticFireproofSetting.Companion.getFireproofSettingOptionForIndex
+import com.duckduckgo.browser.impl.R
+import com.duckduckgo.browser.impl.databinding.ActivityFireproofWebsitesBinding
 import com.duckduckgo.common.ui.DuckDuckGoActivity
 import com.duckduckgo.common.ui.view.dialog.RadioListAlertDialogBuilder
 import com.duckduckgo.common.ui.viewbinding.viewBinding

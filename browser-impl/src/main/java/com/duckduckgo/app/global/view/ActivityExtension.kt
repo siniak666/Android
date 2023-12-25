@@ -26,8 +26,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.FragmentActivity
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.browser.defaultbrowsing.DefaultBrowserSystemSettings
+import com.duckduckgo.browser.impl.R
 import timber.log.Timber
 
 fun FragmentActivity.launchExternalActivity(intent: Intent) {

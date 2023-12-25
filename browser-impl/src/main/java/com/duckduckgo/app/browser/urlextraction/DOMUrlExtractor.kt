@@ -19,8 +19,8 @@ package com.duckduckgo.app.browser.urlextraction
 import android.content.Context
 import android.webkit.WebView
 import androidx.annotation.UiThread
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.browser.urlextraction.UrlExtractionJavascriptInterface.Companion.URL_EXTRACTION_JAVASCRIPT_INTERFACE_NAME
+import com.duckduckgo.browser.impl.R
 
 interface DOMUrlExtractor {
     fun addUrlExtraction(webView: WebView, onUrlExtracted: (extractedUrl: String?) -> Unit)

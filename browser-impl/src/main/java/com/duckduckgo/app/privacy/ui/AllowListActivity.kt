@@ -23,12 +23,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.duckduckgo.anvil.annotations.InjectWith
-import com.duckduckgo.browser.impl.R
-import com.duckduckgo.browser.impl.databinding.ActivityAllowlistBinding
-import com.duckduckgo.browser.impl.databinding.DialogEditAllowlistBinding
 import com.duckduckgo.app.browser.favicon.FaviconManager
 import com.duckduckgo.app.privacy.model.UserAllowListedDomain
 import com.duckduckgo.app.privacy.ui.AllowListViewModel.Command.*
+import com.duckduckgo.browser.impl.R
+import com.duckduckgo.browser.impl.databinding.ActivityAllowlistBinding
+import com.duckduckgo.browser.impl.databinding.DialogEditAllowlistBinding
 import com.duckduckgo.common.ui.DuckDuckGoActivity
 import com.duckduckgo.common.ui.view.dialog.CustomAlertDialogBuilder
 import com.duckduckgo.common.ui.view.dialog.TextAlertDialogBuilder

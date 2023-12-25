@@ -19,12 +19,12 @@ package com.duckduckgo.app.feedback.ui.negative.mainreason
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.duckduckgo.anvil.annotations.InjectWith
-import com.duckduckgo.browser.impl.R
-import com.duckduckgo.browser.impl.databinding.ContentFeedbackNegativeDisambiguationMainReasonBinding
 import com.duckduckgo.app.feedback.ui.common.FeedbackFragment
 import com.duckduckgo.app.feedback.ui.negative.FeedbackType.MainReason
 import com.duckduckgo.app.feedback.ui.negative.FeedbackTypeDisplay
 import com.duckduckgo.app.feedback.ui.negative.FeedbackTypeDisplay.FeedbackTypeMainReasonDisplay
+import com.duckduckgo.browser.impl.R
+import com.duckduckgo.browser.impl.databinding.ContentFeedbackNegativeDisambiguationMainReasonBinding
 import com.duckduckgo.common.ui.viewbinding.viewBinding
 import com.duckduckgo.di.scopes.FragmentScope
 

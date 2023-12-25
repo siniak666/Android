@@ -19,8 +19,8 @@ package com.duckduckgo.app.sitepermissions.permissionsperwebsite
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.duckduckgo.browser.impl.databinding.ItemSitePermissionSettingSelectionBinding
 import com.duckduckgo.app.sitepermissions.permissionsperwebsite.PermissionSettingAdapter.ViewHolder
+import com.duckduckgo.browser.impl.databinding.ItemSitePermissionSettingSelectionBinding
 
 class PermissionSettingAdapter(private val viewModel: PermissionsPerWebsiteViewModel) : RecyclerView.Adapter<ViewHolder>() {
 

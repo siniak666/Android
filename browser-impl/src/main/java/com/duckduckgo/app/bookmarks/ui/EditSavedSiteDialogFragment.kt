@@ -21,8 +21,8 @@ import android.text.Editable
 import android.text.Spanned
 import android.view.View
 import com.duckduckgo.app.bookmarks.ui.bookmarkfolders.AddBookmarkFolderDialogFragment
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.global.view.TextChangedWatcher
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.common.ui.view.text.DaxTextInput
 import com.duckduckgo.common.ui.view.text.DaxTextView
 import com.duckduckgo.common.utils.extensions.html

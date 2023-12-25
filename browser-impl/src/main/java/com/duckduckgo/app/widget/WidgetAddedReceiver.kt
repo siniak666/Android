@@ -23,9 +23,9 @@ import android.content.IntentFilter
 import android.os.Build
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.lifecycle.MainProcessLifecycleObserver
 import com.duckduckgo.app.widget.AppWidgetManagerAddWidgetLauncher.Companion.ACTION_ADD_WIDGET
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.di.scopes.AppScope
 import com.squareup.anvil.annotations.ContributesMultibinding
 import dagger.SingleInstanceIn

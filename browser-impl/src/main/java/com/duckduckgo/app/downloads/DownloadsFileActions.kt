@@ -23,8 +23,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import androidx.core.content.FileProvider
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.appbuildconfig.api.AppBuildConfig
+import com.duckduckgo.browser.impl.R
 import java.io.File
 import javax.inject.Inject
 import timber.log.Timber

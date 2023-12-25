@@ -24,9 +24,9 @@ import android.os.Bundle
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.RenderMode
 import com.duckduckgo.anvil.annotations.InjectWith
+import com.duckduckgo.app.settings.clear.FireAnimation
 import com.duckduckgo.browser.impl.R
 import com.duckduckgo.browser.impl.databinding.ActivityFireAnimationBinding
-import com.duckduckgo.app.settings.clear.FireAnimation
 import com.duckduckgo.common.ui.DuckDuckGoActivity
 import com.duckduckgo.common.ui.view.setAndPropagateUpFitsSystemWindows
 import com.duckduckgo.common.ui.view.show

@@ -16,12 +16,12 @@
 
 package com.duckduckgo.app.settings.clear
 
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.settings.clear.FireAnimation.HeroAbstract
 import com.duckduckgo.app.settings.clear.FireAnimation.HeroFire
 import com.duckduckgo.app.settings.clear.FireAnimation.HeroWater
 import com.duckduckgo.app.settings.clear.FireAnimation.None
 import com.duckduckgo.app.statistics.pixels.Pixel
+import com.duckduckgo.browser.impl.R
 import java.io.Serializable
 
 sealed class FireAnimation(

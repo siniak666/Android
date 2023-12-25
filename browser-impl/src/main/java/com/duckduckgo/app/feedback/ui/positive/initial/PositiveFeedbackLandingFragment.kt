@@ -17,10 +17,10 @@
 package com.duckduckgo.app.feedback.ui.positive.initial
 
 import com.duckduckgo.anvil.annotations.InjectWith
-import com.duckduckgo.browser.impl.R
-import com.duckduckgo.browser.impl.databinding.ContentFeedbackPositiveLandingBinding
 import com.duckduckgo.app.feedback.ui.common.FeedbackFragment
 import com.duckduckgo.app.playstore.PlayStoreUtils
+import com.duckduckgo.browser.impl.R
+import com.duckduckgo.browser.impl.databinding.ContentFeedbackPositiveLandingBinding
 import com.duckduckgo.common.ui.viewbinding.viewBinding
 import com.duckduckgo.di.scopes.FragmentScope
 import javax.inject.Inject

@@ -19,8 +19,8 @@ package com.duckduckgo.app.browser.downloader
 import android.content.Context
 import android.webkit.WebView
 import androidx.annotation.UiThread
-import com.duckduckgo.browser.impl.R
 import com.duckduckgo.app.browser.downloader.BlobConverterJavascriptInterface.Companion.JAVASCRIPT_INTERFACE_NAME
+import com.duckduckgo.browser.impl.R
 
 interface BlobConverterInjector {
     fun addJsInterface(

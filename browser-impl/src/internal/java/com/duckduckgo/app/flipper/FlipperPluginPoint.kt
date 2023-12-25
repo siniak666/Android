@@ -22,7 +22,7 @@ import com.facebook.flipper.core.FlipperPlugin
 
 @ContributesPluginPoint(
     scope = AppScope::class,
-    boundType = FlipperPlugin::class
+    boundType = FlipperPlugin::class,
 )
 @Suppress("unused")
 private interface FlipperPluginPluginPoint

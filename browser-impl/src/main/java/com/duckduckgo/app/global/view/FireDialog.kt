@@ -29,8 +29,6 @@ import androidx.core.view.doOnDetach
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.airbnb.lottie.RenderMode
-import com.duckduckgo.browser.impl.databinding.IncludeDaxDialogCtaBinding
-import com.duckduckgo.browser.impl.databinding.SheetFireClearDataBinding
 import com.duckduckgo.app.cta.ui.CtaViewModel
 import com.duckduckgo.app.cta.ui.DaxFireDialogCta
 import com.duckduckgo.app.global.events.db.UserEventKey
@@ -42,6 +40,8 @@ import com.duckduckgo.app.settings.clear.getPixelValue
 import com.duckduckgo.app.settings.db.SettingsDataStore
 import com.duckduckgo.app.statistics.pixels.Pixel
 import com.duckduckgo.app.statistics.pixels.Pixel.PixelParameter.FIRE_ANIMATION
+import com.duckduckgo.browser.impl.databinding.IncludeDaxDialogCtaBinding
+import com.duckduckgo.browser.impl.databinding.SheetFireClearDataBinding
 import com.duckduckgo.common.ui.view.gone
 import com.duckduckgo.common.ui.view.setAndPropagateUpFitsSystemWindows
 import com.duckduckgo.common.ui.view.show

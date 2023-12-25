@@ -26,12 +26,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.duckduckgo.browser.impl.R
-import com.duckduckgo.browser.impl.R.layout
-import com.duckduckgo.browser.impl.databinding.ViewSitePermissionsDescriptionBinding
-import com.duckduckgo.browser.impl.databinding.ViewSitePermissionsEmptyListBinding
-import com.duckduckgo.browser.impl.databinding.ViewSitePermissionsTitleBinding
-import com.duckduckgo.browser.impl.databinding.ViewSitePermissionsToggleBinding
 import com.duckduckgo.app.browser.favicon.FaviconManager
 import com.duckduckgo.app.sitepermissions.SitePermissionListItem.Divider
 import com.duckduckgo.app.sitepermissions.SitePermissionListItem.EmptySites
@@ -45,6 +39,12 @@ import com.duckduckgo.app.sitepermissions.SitePermissionsListViewType.HEADER
 import com.duckduckgo.app.sitepermissions.SitePermissionsListViewType.SITES_EMPTY
 import com.duckduckgo.app.sitepermissions.SitePermissionsListViewType.SITE_ALLOWED_ITEM
 import com.duckduckgo.app.sitepermissions.SitePermissionsListViewType.TOGGLE
+import com.duckduckgo.browser.impl.R
+import com.duckduckgo.browser.impl.R.layout
+import com.duckduckgo.browser.impl.databinding.ViewSitePermissionsDescriptionBinding
+import com.duckduckgo.browser.impl.databinding.ViewSitePermissionsEmptyListBinding
+import com.duckduckgo.browser.impl.databinding.ViewSitePermissionsTitleBinding
+import com.duckduckgo.browser.impl.databinding.ViewSitePermissionsToggleBinding
 import com.duckduckgo.common.ui.menu.PopupMenu
 import com.duckduckgo.common.ui.view.PopupMenuItemView
 import com.duckduckgo.common.ui.view.divider.HorizontalDivider

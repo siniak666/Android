@@ -18,9 +18,9 @@ package com.duckduckgo.widget
 
 import android.content.Context
 import com.duckduckgo.di.scopes.AppScope
+import com.duckduckgo.privacy.config.api.PrivacyConfigUpdateListener
 import com.squareup.anvil.annotations.ContributesBinding
 import javax.inject.Inject
-import com.duckduckgo.privacy.config.api.PrivacyConfigUpdateListener
 
 @ContributesBinding(AppScope::class)
 class WidgetPrivacyConfigUpdateListener @Inject constructor(

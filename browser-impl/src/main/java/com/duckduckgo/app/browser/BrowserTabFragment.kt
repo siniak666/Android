@@ -97,13 +97,6 @@ import com.duckduckgo.app.browser.WebViewErrorResponse.LOADING
 import com.duckduckgo.app.browser.WebViewErrorResponse.OMITTED
 import com.duckduckgo.app.browser.autocomplete.BrowserAutoCompleteSuggestionsAdapter
 import com.duckduckgo.app.browser.cookies.ThirdPartyCookieManager
-import com.duckduckgo.browser.impl.databinding.ContentSiteLocationPermissionDialogBinding
-import com.duckduckgo.browser.impl.databinding.ContentSystemLocationPermissionDialogBinding
-import com.duckduckgo.browser.impl.databinding.FragmentBrowserTabBinding
-import com.duckduckgo.browser.impl.databinding.HttpAuthenticationBinding
-import com.duckduckgo.browser.impl.databinding.IncludeOmnibarToolbarBinding
-import com.duckduckgo.browser.impl.databinding.IncludeQuickAccessItemsBinding
-import com.duckduckgo.browser.impl.databinding.PopupWindowBrowserMenuBinding
 import com.duckduckgo.app.browser.downloader.BlobConverterInjector
 import com.duckduckgo.app.browser.favicon.FaviconManager
 import com.duckduckgo.app.browser.favorites.FavoritesQuickAccessAdapter
@@ -201,6 +194,13 @@ import com.duckduckgo.autofill.api.emailprotection.EmailInjector
 import com.duckduckgo.autofill.api.store.AutofillStore.ContainsCredentialsResult.*
 import com.duckduckgo.browser.api.brokensite.BrokenSiteData
 import com.duckduckgo.browser.impl.R
+import com.duckduckgo.browser.impl.databinding.ContentSiteLocationPermissionDialogBinding
+import com.duckduckgo.browser.impl.databinding.ContentSystemLocationPermissionDialogBinding
+import com.duckduckgo.browser.impl.databinding.FragmentBrowserTabBinding
+import com.duckduckgo.browser.impl.databinding.HttpAuthenticationBinding
+import com.duckduckgo.browser.impl.databinding.IncludeOmnibarToolbarBinding
+import com.duckduckgo.browser.impl.databinding.IncludeQuickAccessItemsBinding
+import com.duckduckgo.browser.impl.databinding.PopupWindowBrowserMenuBinding
 import com.duckduckgo.common.ui.DuckDuckGoFragment
 import com.duckduckgo.common.ui.store.BrowserAppTheme
 import com.duckduckgo.common.ui.view.DaxDialog
@@ -1323,7 +1323,13 @@ class BrowserTabFragment :
             client.urlExtractionListener = viewModel
 
             Timber.d("AMP link detection: Creating WebView for URL extraction")
-            urlExtractingWebView = UrlExtractingWebView(requireContext(), client, urlExtractorUserAgent.get(), urlExtractor.get(), appBuildConfig.isDebug)
+            urlExtractingWebView = UrlExtractingWebView(
+                requireContext(),
+                client,
+                urlExtractorUserAgent.get(),
+                urlExtractor.get(),
+                appBuildConfig.isDebug,
+            )
 
             urlExtractingWebView?.urlExtractionListener = viewModel
 

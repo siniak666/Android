@@ -18,10 +18,10 @@ package com.duckduckgo.app.feedback.ui.initial
 
 import android.os.Bundle
 import com.duckduckgo.anvil.annotations.InjectWith
-import com.duckduckgo.browser.impl.R
-import com.duckduckgo.browser.impl.databinding.ContentFeedbackBinding
 import com.duckduckgo.app.feedback.ui.common.FeedbackFragment
 import com.duckduckgo.app.feedback.ui.initial.InitialFeedbackFragmentViewModel.Command.*
+import com.duckduckgo.browser.impl.R
+import com.duckduckgo.browser.impl.databinding.ContentFeedbackBinding
 import com.duckduckgo.common.ui.DuckDuckGoTheme
 import com.duckduckgo.common.ui.store.ThemingDataStore
 import com.duckduckgo.common.ui.viewbinding.viewBinding
