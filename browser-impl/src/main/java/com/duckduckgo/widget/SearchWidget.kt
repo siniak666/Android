@@ -25,6 +25,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.RemoteViews
+import com.duckduckgo.anvil.annotations.InjectWith
 import com.duckduckgo.app.global.install.AppInstallStore
 import com.duckduckgo.app.pixels.AppPixelName.WIDGETS_ADDED
 import com.duckduckgo.app.pixels.AppPixelName.WIDGETS_DELETED
@@ -32,11 +33,14 @@ import com.duckduckgo.app.statistics.pixels.Pixel
 import com.duckduckgo.app.systemsearch.SystemSearchActivity
 import com.duckduckgo.app.widget.ui.AppWidgetCapabilities
 import com.duckduckgo.browser.impl.R
+import com.duckduckgo.di.scopes.ReceiverScope
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
+@InjectWith(ReceiverScope::class)
 class SearchWidgetLight : SearchWidget(R.layout.search_widget_light)
 
+@InjectWith(ReceiverScope::class)
 open class SearchWidget(val layoutId: Int = R.layout.search_widget_dark) : AppWidgetProvider() {
 
     @Inject
@@ -60,7 +64,7 @@ open class SearchWidget(val layoutId: Int = R.layout.search_widget_dark) : AppWi
     }
 
     private fun inject(context: Context) {
-        AndroidInjection.inject(this as Service)
+        AndroidInjection.inject(this, context)
         // val application = context.applicationContext as DuckDuckGoApplication
         // application.daggerAppComponent.inject(this)
     }
