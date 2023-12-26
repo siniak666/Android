@@ -28,6 +28,20 @@ android {
     namespace "com.duckduckgo.browser.impl"
 
     flavorDimensions "store"
+    buildTypes {
+        debug {
+            manifestPlaceholders = [
+                    appIcon     : "@mipmap/ic_launcher_blue",
+                    appIconRound: "@mipmap/ic_launcher_blue_round"
+            ]
+        }
+        release {
+            manifestPlaceholders = [
+                    appIcon     : "@mipmap/ic_launcher_red",
+                    appIconRound: "@mipmap/ic_launcher_red_round"
+            ]
+        }
+    }
     productFlavors {
         internal {
             dimension "store"
@@ -39,8 +53,20 @@ android {
             dimension "store"
         }
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlin {
+        jvmToolchain(17)
+    }
     anvil {
         generateDaggerFactories = true // default is false
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+        animationsDisabled = true
     }
 }
 
