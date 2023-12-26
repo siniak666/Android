@@ -19,7 +19,6 @@ package com.duckduckgo.app.downloads
 import android.content.Context
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import app.cash.turbine.test
-import com.duckduckgo.app.browser.R
 import com.duckduckgo.app.downloads.DownloadViewItem.Empty
 import com.duckduckgo.app.downloads.DownloadViewItem.Header
 import com.duckduckgo.app.downloads.DownloadViewItem.Item
@@ -29,6 +28,7 @@ import com.duckduckgo.app.downloads.DownloadsViewModel.Command.DisplayMessage
 import com.duckduckgo.app.downloads.DownloadsViewModel.Command.DisplayUndoMessage
 import com.duckduckgo.app.downloads.DownloadsViewModel.Command.OpenFile
 import com.duckduckgo.app.downloads.DownloadsViewModel.Command.ShareFile
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.common.test.CoroutineTestRule
 import com.duckduckgo.common.utils.R as CommonR
 import com.duckduckgo.common.utils.formatters.time.RealTimeDiffFormatter

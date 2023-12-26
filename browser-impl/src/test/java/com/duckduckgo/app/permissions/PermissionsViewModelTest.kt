@@ -18,12 +18,12 @@ package com.duckduckgo.app.permissions
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import app.cash.turbine.test
-import com.duckduckgo.app.browser.R
 import com.duckduckgo.app.permissions.PermissionsViewModel.Command
 import com.duckduckgo.app.pixels.AppPixelName
 import com.duckduckgo.app.settings.clear.AppLinkSettingType
 import com.duckduckgo.app.settings.db.SettingsDataStore
 import com.duckduckgo.app.statistics.pixels.Pixel
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.common.test.CoroutineTestRule
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals

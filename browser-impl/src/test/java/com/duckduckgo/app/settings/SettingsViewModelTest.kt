@@ -18,7 +18,6 @@ package com.duckduckgo.app.settings
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import app.cash.turbine.test
-import com.duckduckgo.app.browser.R
 import com.duckduckgo.app.browser.defaultbrowsing.DefaultBrowserDetector
 import com.duckduckgo.app.pixels.AppPixelName
 import com.duckduckgo.app.settings.SettingsViewModel.Command
@@ -30,6 +29,7 @@ import com.duckduckgo.app.statistics.pixels.Pixel
 import com.duckduckgo.autoconsent.api.Autoconsent
 import com.duckduckgo.autofill.api.AutofillCapabilityChecker
 import com.duckduckgo.autofill.api.email.EmailManager
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.common.test.CoroutineTestRule
 import com.duckduckgo.common.ui.view.listitem.CheckListItem
 import com.duckduckgo.mobile.android.app.tracking.AppTrackingProtection

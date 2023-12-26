@@ -17,7 +17,6 @@
 package com.duckduckgo.app.sitepermissions
 
 import app.cash.turbine.test
-import com.duckduckgo.app.browser.R
 import com.duckduckgo.app.location.GeoLocationPermissions
 import com.duckduckgo.app.location.data.LocationPermissionEntity
 import com.duckduckgo.app.location.data.LocationPermissionType
@@ -25,6 +24,7 @@ import com.duckduckgo.app.location.data.LocationPermissionsRepository
 import com.duckduckgo.app.settings.db.SettingsDataStore
 import com.duckduckgo.app.sitepermissions.SitePermissionsViewModel.Command.LaunchWebsiteAllowed
 import com.duckduckgo.app.sitepermissions.SitePermissionsViewModel.Command.ShowRemovedAllConfirmationSnackbar
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.common.test.CoroutineTestRule
 import com.duckduckgo.site.permissions.impl.SitePermissionsRepository
 import com.duckduckgo.site.permissions.store.sitepermissions.SitePermissionsEntity
