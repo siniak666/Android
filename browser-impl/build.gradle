@@ -29,18 +29,6 @@ android {
 
     flavorDimensions "store"
     buildTypes {
-        debug {
-            manifestPlaceholders = [
-                    appIcon     : "@mipmap/ic_launcher_blue",
-                    appIconRound: "@mipmap/ic_launcher_blue_round"
-            ]
-        }
-        release {
-            manifestPlaceholders = [
-                    appIcon     : "@mipmap/ic_launcher_red",
-                    appIconRound: "@mipmap/ic_launcher_red_round"
-            ]
-        }
     }
     productFlavors {
         internal {
@@ -380,4 +368,8 @@ dependencies {
     lintChecks project(":lint-rules")
 }
 
-
+// android-library declares `testDebugUnitTest` as a dependency of jvm_checks, but that doesn't exist for this module
+// this effectively delegates to the right task
+tasks.register('testDebugUnitTest') {
+    dependsOn 'testPlayDebugUnitTest'
+}
