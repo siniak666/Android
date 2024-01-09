@@ -17,7 +17,6 @@
 package com.duckduckgo.widget
 
 import android.app.PendingIntent
-import android.app.Service
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
