@@ -18,7 +18,6 @@ package com.duckduckgo.app.integration
 
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
-import com.duckduckgo.app.getDaggerComponent
 import com.duckduckgo.app.statistics.api.RefreshRetentionAtbPlugin
 import com.duckduckgo.app.statistics.api.StatisticsRequester
 import com.duckduckgo.app.statistics.api.StatisticsService
@@ -28,15 +27,25 @@ import com.duckduckgo.app.statistics.store.StatisticsSharedPreferences
 import com.duckduckgo.autofill.api.email.EmailManager
 import com.duckduckgo.common.test.CoroutineTestRule
 import com.duckduckgo.common.test.InstantSchedulersRule
+import com.duckduckgo.common.utils.AppUrl.Url
 import com.duckduckgo.common.utils.plugins.PluginPoint
 import com.duckduckgo.experiments.api.VariantManager
+import com.squareup.moshi.Moshi
 import kotlinx.coroutines.test.TestScope
-import org.junit.Assert.*
+import okhttp3.OkHttpClient
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 /**
  * These tests communicate with the server and therefore will be slowed down if there is slow internet access.
@@ -66,7 +75,21 @@ class AtbIntegrationTest {
         statisticsStore.clearAtb()
 
         whenever(mockVariantManager.getVariantKey()).thenReturn("ma")
-        service = getDaggerComponent().retrofit().create(StatisticsService::class.java)
+
+        val okHttpClient = OkHttpClient.Builder().build()
+        val moshi = Moshi.Builder().build()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(Url.API)
+            .callFactory { okHttpClient.newCall(it) }
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+
+        service = retrofit.create(StatisticsService::class.java)
+
+        // service = getDaggerComponent().retrofit().create(StatisticsService::class.java)
 
         val plugins = object : PluginPoint<RefreshRetentionAtbPlugin> {
             override fun getPlugins(): Collection<RefreshRetentionAtbPlugin> {
