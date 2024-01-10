@@ -19,8 +19,6 @@ package com.duckduckgo.app
 import androidx.annotation.UiThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.test.platform.app.InstrumentationRegistry
-import com.duckduckgo.app.global.DuckDuckGoApplication
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
@@ -36,12 +34,4 @@ fun <T> LiveData<T>.blockingObserve(): T? {
     observeForever(innerObserver)
     latch.await(2, TimeUnit.SECONDS)
     return value
-}
-
-fun getApp(): DuckDuckGoApplication {
-    return InstrumentationRegistry.getInstrumentation().targetContext.applicationContext as DuckDuckGoApplication
-}
-
-fun getDaggerComponent(): com.duckduckgo.app.AppComponent {
-    return getApp().daggerAppComponent as com.duckduckgo.app.AppComponent
 }

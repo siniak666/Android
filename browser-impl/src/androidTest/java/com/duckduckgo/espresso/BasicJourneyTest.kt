@@ -23,7 +23,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.duckduckgo.app.browser.BrowserActivity
-import com.duckduckgo.app.browser.R
+import com.duckduckgo.browser.impl.R
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

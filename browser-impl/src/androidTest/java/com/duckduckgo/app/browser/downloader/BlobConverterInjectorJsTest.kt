@@ -20,7 +20,7 @@ import android.webkit.WebView
 import androidx.test.annotation.UiThreadTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
-import com.duckduckgo.app.browser.R
+import com.duckduckgo.browser.impl.R
 import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.spy

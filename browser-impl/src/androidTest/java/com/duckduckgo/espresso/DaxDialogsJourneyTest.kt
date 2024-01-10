@@ -25,8 +25,8 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
-import com.duckduckgo.app.browser.R
 import com.duckduckgo.app.onboarding.ui.OnboardingActivity
+import com.duckduckgo.browser.impl.R
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

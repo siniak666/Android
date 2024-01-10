@@ -31,7 +31,7 @@ import androidx.test.espresso.web.webdriver.Locator.ID
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry
 import com.duckduckgo.app.browser.BrowserActivity
-import com.duckduckgo.app.browser.R
+import com.duckduckgo.browser.impl.R
 import com.duckduckgo.espresso.PrivacyTest
 import com.duckduckgo.espresso.WebViewIdlingResource
 import com.duckduckgo.espresso.waitForView
