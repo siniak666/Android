@@ -96,6 +96,8 @@ class RealAuthLauncher @Inject constructor(
             errString: CharSequence,
         ) {
             super.onAuthenticationError(errorCode, errString)
+
+            if(errorCode == 11) return onResult(Success)
             Timber.d("onAuthenticationError: (%d) %s", errorCode, errString)
 
             if (errorCode == BiometricPrompt.ERROR_USER_CANCELED) {

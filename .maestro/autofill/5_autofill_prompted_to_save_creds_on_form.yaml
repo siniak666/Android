@@ -1,0 +1,33 @@
+appId: com.duckduckgo.mobile.android
+---
+#- tapOn: "Navigate up"
+- tapOn:
+    text: "search or type URL"
+- inputText: "fill.dev/form/login-simple"
+- pressKey: enter
+- tapOn:
+    id: "username"
+- inputText: "user"
+- tapOn:
+    id: "password"
+- inputText: "password1"
+- tapOn:
+    text: "Login"
+- assertVisible: "Save Password"
+- tapOn: "Save Password"
+- pressKey: back
+- tapOn: "Close Autofill Dialog"
+- tapOn:
+    id: "password"
+- inputText: "password2"
+- tapOn:
+    text: "Login"
+- assertVisible: "Update Password"
+- tapOn: "Update Password"
+- tapOn:
+    id: "com.duckduckgo.mobile.android.debug:id/browserMenu"
+- tapOn: "Passwords"
+- tapOn: "user"
+- tapOn:
+    id: "com.duckduckgo.mobile.android.debug:id/internal_password_icon"
+- assertVisible: "password2"

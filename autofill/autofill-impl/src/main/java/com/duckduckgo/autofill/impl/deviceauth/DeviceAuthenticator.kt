@@ -69,13 +69,14 @@ class RealDeviceAuthenticator @Inject constructor(
 ) : DeviceAuthenticator {
 
     override fun hasValidDeviceAuthentication(): Boolean {
-        // https://developer.android.com/reference/androidx/biometric/BiometricManager#canAuthenticate(int)
-        // BIOMETRIC_STRONG | DEVICE_CREDENTIAL is unsupported on API 28-29
-        return if (appBuildConfig.sdkInt != Build.VERSION_CODES.Q && appBuildConfig.sdkInt != Build.VERSION_CODES.P) {
-            deviceAuthChecker.supportsStrongAuthentication()
-        } else {
-            deviceAuthChecker.supportsLegacyAuthentication()
-        }
+        return true
+        // // https://developer.android.com/reference/androidx/biometric/BiometricManager#canAuthenticate(int)
+        // // BIOMETRIC_STRONG | DEVICE_CREDENTIAL is unsupported on API 28-29
+        // return if (appBuildConfig.sdkInt != Build.VERSION_CODES.Q && appBuildConfig.sdkInt != Build.VERSION_CODES.P) {
+        //     deviceAuthChecker.supportsStrongAuthentication()
+        // } else {
+        //     deviceAuthChecker.supportsLegacyAuthentication()
+        // }
     }
 
     @UiThread
