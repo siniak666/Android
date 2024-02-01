@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 DuckDuckGo
+ * Copyright (c) 2024 DuckDuckGo
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.duckduckgo.app
+package com.duckduckgo.app.di
 
 import android.app.Application
-import com.duckduckgo.app.di.AppCoroutineScope
+import com.duckduckgo.app.DuckDuckGoApplication
 import com.duckduckgo.di.scopes.AppScope
 import com.duckduckgo.widget.EmptyFavoritesWidgetService
 import com.duckduckgo.widget.FavoritesWidgetService
@@ -28,8 +28,9 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.SingleInstanceIn
 import dagger.android.AndroidInjector
+import javax.inject.Named
 import kotlinx.coroutines.CoroutineScope
-// import retrofit2.Retrofit
+import retrofit2.Retrofit
 
 @SingleInstanceIn(AppScope::class)
 @MergeComponent(scope = AppScope::class)
@@ -56,6 +57,6 @@ interface AppComponent : AndroidInjector<DuckDuckGoApplication> {
     fun inject(emptyFavoritesWidgetItemFactory: EmptyFavoritesWidgetService.EmptyFavoritesWidgetItemFactory)
 
     // accessor to Retrofit instance for test only only for test
-    // @Named("api")
-    // fun retrofit(): Retrofit
+    @Named("api")
+    fun retrofit(): Retrofit
 }

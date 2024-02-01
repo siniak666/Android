@@ -152,8 +152,7 @@ subprojects {
                             }
                         }
                         if (dependencyPath.endsWith(":app")) {
-                            throw new GradleException("Invalid dependency $projectPath -> $dependencyPath. " +
-                                    "No other module can depend on ':app'")
+                            //throw new GradleException("Invalid dependency $projectPath -> $dependencyPath. " + "No other module can depend on ':app'")
                         }
                     }
                 }

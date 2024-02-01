@@ -17,7 +17,9 @@
 package com.duckduckgo.app
 
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.duckduckgo.app.di.AppComponent
 import com.duckduckgo.app.di.AppCoroutineScope
+import com.duckduckgo.app.di.DaggerAppComponent
 import com.duckduckgo.app.global.MultiProcessApplication
 import com.duckduckgo.app.global.currentProcessName
 import com.duckduckgo.app.global.runInSecondaryProcessNamed

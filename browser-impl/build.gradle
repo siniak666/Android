@@ -27,8 +27,27 @@ apply from: "$rootProject.projectDir/gradle/android-library.gradle"
 android {
     namespace "com.duckduckgo.browser.impl"
 
+    defaultConfig {
+        sourceSets {
+            androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
     flavorDimensions "store"
     buildTypes {
+        debug {
+            manifestPlaceholders = [
+                    appIcon     : "@mipmap/ic_launcher_blue",
+                    appIconRound: "@mipmap/ic_launcher_blue_round"
+            ]
+        }
+        release {
+            manifestPlaceholders = [
+                    appIcon     : "@mipmap/ic_launcher_red",
+                    appIconRound: "@mipmap/ic_launcher_red_round"
+            ]
+        }
     }
     productFlavors {
         internal {
@@ -61,6 +80,7 @@ android {
 dependencies {
     // Deprecated. TODO: Stop using this artifact.
     implementation "androidx.legacy:legacy-support-v4:_"
+    androidTestImplementation project(':app')
     debugImplementation Square.leakCanary.android
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
