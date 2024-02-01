@@ -66,6 +66,12 @@ class ContributesSubComponentCodeGenerator : CodeGenerator {
         val generatedPackage = vmClass.packageFqName.toString()
         val subcomponentFactoryClassName = vmClass.subComponentName()
         val scope = vmClass.annotations.first { it.fqName == InjectWith::class.fqName }.scopeOrNull(0)!!
+        println("XXXXXX")
+        println("XXXXXX")
+        println("XXXXXX")
+        println("XXXXXX")
+        println("XXXXXX")
+        println("XXXXXX")
         val delayed: Boolean = (
             vmClass.annotations.first {
                 it.fqName == InjectWith::class.fqName
@@ -203,6 +209,7 @@ class ContributesSubComponentCodeGenerator : CodeGenerator {
             vpnScopeFqName.asClassName(module) -> appScopeFqName
             quickSettingsScopeFqName.asClassName(module) -> appScopeFqName
             fragmentScopeFqName.asClassName(module) -> activityScopeFqName
+            remoteViewServiceScopeFqName.asClassName(module) -> appScopeFqName
             viewScopeFqName.asClassName(module) -> activityScopeFqName
             backupAgentScopeFqName.asClassName(module) -> appScopeFqName
             else -> throw AnvilCompilationException("${this.asClassName(module)} scope is not currently supported")
@@ -232,6 +239,7 @@ class ContributesSubComponentCodeGenerator : CodeGenerator {
         private val receiverScopeFqName = FqName("com.duckduckgo.di.scopes.ReceiverScope")
         private val vpnScopeFqName = FqName("com.duckduckgo.di.scopes.VpnScope")
         private val quickSettingsScopeFqName = FqName("com.duckduckgo.di.scopes.QuickSettingsScope")
+        private val remoteViewServiceScopeFqName = FqName("com.duckduckgo.di.scopes.RemoteViewServiceScope")
         private val viewScopeFqName = FqName("com.duckduckgo.di.scopes.ViewScope")
         private val backupAgentScopeFqName = FqName("com.duckduckgo.di.scopes.BackupAgentScope")
     }

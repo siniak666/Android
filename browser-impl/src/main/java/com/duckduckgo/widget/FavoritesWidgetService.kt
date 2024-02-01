@@ -18,7 +18,6 @@ package com.duckduckgo.widget
 
 import android.app.Service
 import android.appwidget.AppWidgetManager
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -27,18 +26,30 @@ import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
+import com.duckduckgo.anvil.annotations.InjectWith
 import com.duckduckgo.app.browser.BrowserActivity
 import com.duckduckgo.app.browser.favicon.FaviconManager
 import com.duckduckgo.app.global.view.generateDefaultDrawable
 import com.duckduckgo.browser.impl.R
 import com.duckduckgo.common.utils.domain
+import com.duckduckgo.di.scopes.RemoteViewServiceScope
 import com.duckduckgo.mobile.android.R as CommonR
 import com.duckduckgo.savedsites.api.SavedSitesRepository
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 import kotlinx.coroutines.runBlocking
 
+@InjectWith(RemoteViewServiceScope::class)
 class FavoritesWidgetService : RemoteViewsService() {
+
+    @Inject
+    lateinit var savedSitesRepository: SavedSitesRepository
+
+    @Inject
+    lateinit var faviconManager: FaviconManager
+
+    @Inject
+    lateinit var widgetPrefs: WidgetPreferences
 
     companion object {
         const val MAX_ITEMS_EXTRAS = "MAX_ITEMS_EXTRAS"
@@ -46,31 +57,26 @@ class FavoritesWidgetService : RemoteViewsService() {
     }
 
     override fun onGetViewFactory(intent: Intent): RemoteViewsFactory {
-        return FavoritesWidgetItemFactory(this.applicationContext, intent)
+        AndroidInjection.inject(this)
+        return FavoritesWidgetItemFactory(this, intent, savedSitesRepository, faviconManager, widgetPrefs)
     }
 
     class FavoritesWidgetItemFactory(
-        val context: Context,
+        val service: Service,
         intent: Intent,
+        val savedSitesRepository: SavedSitesRepository,
+        val faviconManager: FaviconManager,
+        val widgetPrefs: WidgetPreferences,
     ) : RemoteViewsFactory {
 
         private val theme = WidgetTheme.getThemeFrom(intent.extras?.getString(THEME_EXTRAS))
-
-        @Inject
-        lateinit var savedSitesRepository: SavedSitesRepository
-
-        @Inject
-        lateinit var faviconManager: FaviconManager
-
-        @Inject
-        lateinit var widgetPrefs: WidgetPreferences
 
         private val appWidgetId = intent.getIntExtra(
             AppWidgetManager.EXTRA_APPWIDGET_ID,
             AppWidgetManager.INVALID_APPWIDGET_ID,
         )
 
-        private val faviconItemSize = context.resources.getDimension(CommonR.dimen.savedSiteGridItemFavicon).toInt()
+        private val faviconItemSize = service.resources.getDimension(CommonR.dimen.savedSiteGridItemFavicon).toInt()
         private val faviconItemCornerRadius = com.duckduckgo.mobile.android.R.dimen.searchWidgetFavoritesCornerRadius
 
         private val maxItems: Int
@@ -87,7 +93,6 @@ class FavoritesWidgetService : RemoteViewsService() {
         private val domains = mutableListOf<WidgetFavorite>()
 
         override fun onCreate() {
-            inject(context)
         }
 
         override fun onDataSetChanged() {
@@ -95,12 +100,12 @@ class FavoritesWidgetService : RemoteViewsService() {
                 val bitmap = runBlocking {
                     faviconManager.loadFromDiskWithParams(
                         url = it.url,
-                        cornerRadius = context.resources.getDimension(faviconItemCornerRadius).toInt(),
+                        cornerRadius = service.resources.getDimension(faviconItemCornerRadius).toInt(),
                         width = faviconItemSize,
                         height = faviconItemSize,
                     )
                         ?: generateDefaultDrawable(
-                            context = context,
+                            context = service,
                             domain = it.url.extractDomain().orEmpty(),
                             cornerRadius = faviconItemCornerRadius,
                         ).toBitmap(faviconItemSize, faviconItemSize)
@@ -128,7 +133,7 @@ class FavoritesWidgetService : RemoteViewsService() {
 
         override fun getViewAt(position: Int): RemoteViews {
             val item = if (position >= domains.size) null else domains[position]
-            val remoteViews = RemoteViews(context.packageName, getItemLayout())
+            val remoteViews = RemoteViews(service.packageName, getItemLayout())
             if (item != null) {
                 if (item.bitmap != null) {
                     remoteViews.setImageViewBitmap(R.id.quickAccessFavicon, item.bitmap)
@@ -175,7 +180,7 @@ class FavoritesWidgetService : RemoteViewsService() {
         }
 
         override fun getLoadingView(): RemoteViews {
-            return RemoteViews(context.packageName, getItemLayout())
+            return RemoteViews(service.packageName, getItemLayout())
         }
 
         override fun getViewTypeCount(): Int {
@@ -188,12 +193,6 @@ class FavoritesWidgetService : RemoteViewsService() {
 
         override fun hasStableIds(): Boolean {
             return true
-        }
-
-        private fun inject(context: Context) {
-            AndroidInjection.inject(this as Service)
-            // val application = context.applicationContext as DuckDuckGoApplication
-            // application.daggerAppComponent.inject(this)
         }
     }
 }

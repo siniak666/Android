@@ -17,23 +17,29 @@
 package com.duckduckgo.widget
 
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
+import com.duckduckgo.anvil.annotations.InjectWith
+import com.duckduckgo.app.browser.favicon.FaviconManager
 import com.duckduckgo.browser.impl.R
+import com.duckduckgo.di.scopes.RemoteViewServiceScope
 import com.duckduckgo.savedsites.api.SavedSitesRepository
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
+@InjectWith(RemoteViewServiceScope::class)
 class EmptyFavoritesWidgetService : RemoteViewsService() {
 
-    companion object {
-        const val MAX_ITEMS_EXTRAS = "MAX_ITEMS_EXTRAS"
-    }
+    @Inject
+    lateinit var savedSitesRepository: SavedSitesRepository
+
+    @Inject
+    lateinit var faviconManager: FaviconManager
 
     override fun onGetViewFactory(intent: Intent): RemoteViewsFactory {
-        return EmptyFavoritesWidgetItemFactory(this.applicationContext, intent)
+        AndroidInjection.inject(this)
+        return EmptyFavoritesWidgetItemFactory(this, savedSitesRepository, faviconManager)
     }
 
     /**
@@ -41,17 +47,14 @@ class EmptyFavoritesWidgetService : RemoteViewsService() {
      * If this RemoteViewsFactory count is 0, SearchAndFavoritesWidget R.id.emptyfavoritesGrid will show the configured EmptyView.
      */
     class EmptyFavoritesWidgetItemFactory(
-        val context: Context,
-        intent: Intent,
+        val service: Service,
+        val savedSitesRepository: SavedSitesRepository,
+        val faviconManager: FaviconManager,
     ) : RemoteViewsFactory {
-
-        @Inject
-        lateinit var savedSitesRepository: SavedSitesRepository
 
         private var count = 0
 
         override fun onCreate() {
-            inject(context)
         }
 
         override fun onDataSetChanged() {
@@ -66,11 +69,11 @@ class EmptyFavoritesWidgetService : RemoteViewsService() {
         }
 
         override fun getViewAt(position: Int): RemoteViews {
-            return RemoteViews(context.packageName, R.layout.empty_view)
+            return RemoteViews(service.packageName, R.layout.empty_view)
         }
 
         override fun getLoadingView(): RemoteViews {
-            return RemoteViews(context.packageName, R.layout.empty_view)
+            return RemoteViews(service.packageName, R.layout.empty_view)
         }
 
         override fun getViewTypeCount(): Int {
@@ -83,12 +86,6 @@ class EmptyFavoritesWidgetService : RemoteViewsService() {
 
         override fun hasStableIds(): Boolean {
             return true
-        }
-
-        private fun inject(context: Context) {
-            AndroidInjection.inject(this as Service)
-            // val application = context.applicationContext as DuckDuckGoApplication
-            // application.daggerAppComponent.inject(this)
         }
     }
 }
