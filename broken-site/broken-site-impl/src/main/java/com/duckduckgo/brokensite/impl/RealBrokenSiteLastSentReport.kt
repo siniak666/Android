@@ -25,7 +25,6 @@ import javax.inject.Inject
 class RealBrokenSiteLastSentReport @Inject constructor(
     private val brokenSiteReportRepository: BrokenSiteReportRepository,
 ) : BrokenSiteLastSentReport {
-
     override suspend fun getLastSentDay(hostname: String): String? {
         return brokenSiteReportRepository.getLastSentDay(hostname)
     }

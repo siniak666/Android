@@ -24,8 +24,6 @@ import com.duckduckgo.adclick.impl.Exemption
 import com.duckduckgo.app.statistics.pixels.Pixel
 import com.duckduckgo.app.statistics.pixels.Pixel.PixelType.COUNT
 import com.duckduckgo.common.test.api.InMemorySharedPreferences
-import java.time.Instant
-import java.util.concurrent.TimeUnit
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -38,10 +36,11 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.never
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
+import java.time.Instant
+import java.util.concurrent.TimeUnit
 
 @RunWith(AndroidJUnit4::class)
 class RealAdClickPixelsTest {
-
     private lateinit var testee: AdClickPixels
     private lateinit var prefs: SharedPreferences
 
@@ -66,12 +65,13 @@ class RealAdClickPixelsTest {
 
     @Test
     fun whenFireAdClickActivePixelCalledWithNonNullExemptionAndPixelAlreadyFiredThenReturnFalse() {
-        val exemption = Exemption(
-            hostTldPlusOne = "ad_domain",
-            navigationExemptionDeadline = 0L,
-            exemptionDeadline = 0L,
-            adClickActivePixelFired = true,
-        )
+        val exemption =
+            Exemption(
+                hostTldPlusOne = "ad_domain",
+                navigationExemptionDeadline = 0L,
+                exemptionDeadline = 0L,
+                adClickActivePixelFired = true,
+            )
 
         val result = testee.fireAdClickActivePixel(exemption)
 
@@ -80,12 +80,13 @@ class RealAdClickPixelsTest {
 
     @Test
     fun whenFireAdClickActivePixelCalledWithNonNullExemptionAndPixelNotAlreadyFiredThenFirePixelAndReturnTrue() {
-        val exemption = Exemption(
-            hostTldPlusOne = "ad_domain",
-            navigationExemptionDeadline = 0L,
-            exemptionDeadline = 0L,
-            adClickActivePixelFired = false,
-        )
+        val exemption =
+            Exemption(
+                hostTldPlusOne = "ad_domain",
+                navigationExemptionDeadline = 0L,
+                exemptionDeadline = 0L,
+                adClickActivePixelFired = false,
+            )
 
         val result = testee.fireAdClickActivePixel(exemption)
 

@@ -33,7 +33,6 @@ import org.mockito.kotlin.whenever
 
 @RunWith(AndroidJUnit4::class)
 class RealAdClickAttributionTest {
-
     private val mockAdClickAttributionRepository: AdClickAttributionRepository = mock()
     private val mockAdClickAttributionFeature: AdClickAttributionFeature = mock()
     private val mockToggle: Toggle = mock()
@@ -43,10 +42,11 @@ class RealAdClickAttributionTest {
     @Test
     fun whenFeatureIsNotEnabledThenIsAllowedReturnsFalse() {
         givenFeatureNotEnabled()
-        testee = RealAdClickAttribution(
-            mockAdClickAttributionRepository,
-            mockAdClickAttributionFeature,
-        )
+        testee =
+            RealAdClickAttribution(
+                mockAdClickAttributionRepository,
+                mockAdClickAttributionFeature,
+            )
 
         val result = testee.isAllowed("https://example.com")
 
@@ -57,10 +57,11 @@ class RealAdClickAttributionTest {
     fun whenFeatureEnabledAndBothDetectionsDisabledThenIsAllowedReturnsFalse() {
         givenFeatureNotEnabled()
         givenDetectionsEnabled(domainEnabled = false, heuristicEnabled = false)
-        testee = RealAdClickAttribution(
-            mockAdClickAttributionRepository,
-            mockAdClickAttributionFeature,
-        )
+        testee =
+            RealAdClickAttribution(
+                mockAdClickAttributionRepository,
+                mockAdClickAttributionFeature,
+            )
 
         val result = testee.isAllowed("https://example.com")
 
@@ -71,10 +72,11 @@ class RealAdClickAttributionTest {
     fun whenFeatureEnabledAndNullHostThenIsAllowedReturnsFalse() {
         givenFeatureEnabled()
         givenDetectionsEnabled(domainEnabled = true, heuristicEnabled = true)
-        testee = RealAdClickAttribution(
-            mockAdClickAttributionRepository,
-            mockAdClickAttributionFeature,
-        )
+        testee =
+            RealAdClickAttribution(
+                mockAdClickAttributionRepository,
+                mockAdClickAttributionFeature,
+            )
 
         val result = testee.isAllowed("/example")
 
@@ -93,10 +95,11 @@ class RealAdClickAttributionTest {
                 ),
             ),
         )
-        testee = RealAdClickAttribution(
-            mockAdClickAttributionRepository,
-            mockAdClickAttributionFeature,
-        )
+        testee =
+            RealAdClickAttribution(
+                mockAdClickAttributionRepository,
+                mockAdClickAttributionFeature,
+            )
 
         val result = testee.isAllowed("https://example.com")
 
@@ -115,10 +118,11 @@ class RealAdClickAttributionTest {
                 ),
             ),
         )
-        testee = RealAdClickAttribution(
-            mockAdClickAttributionRepository,
-            mockAdClickAttributionFeature,
-        )
+        testee =
+            RealAdClickAttribution(
+                mockAdClickAttributionRepository,
+                mockAdClickAttributionFeature,
+            )
 
         val result = testee.isAllowed("https://some.other.example.com")
 
@@ -128,10 +132,11 @@ class RealAdClickAttributionTest {
     @Test
     fun whenFeatureIsNotEnabledThenIsAdClickReturnsFalse() {
         givenFeatureNotEnabled()
-        testee = RealAdClickAttribution(
-            mockAdClickAttributionRepository,
-            mockAdClickAttributionFeature,
-        )
+        testee =
+            RealAdClickAttribution(
+                mockAdClickAttributionRepository,
+                mockAdClickAttributionFeature,
+            )
 
         val result = testee.isAdClick("https://example.com")
 
@@ -142,10 +147,11 @@ class RealAdClickAttributionTest {
     fun whenFeatureEnabledAndBothDetectionsDisabledThenIsAdClickReturnsFalse() {
         givenFeatureNotEnabled()
         givenDetectionsEnabled(domainEnabled = false, heuristicEnabled = false)
-        testee = RealAdClickAttribution(
-            mockAdClickAttributionRepository,
-            mockAdClickAttributionFeature,
-        )
+        testee =
+            RealAdClickAttribution(
+                mockAdClickAttributionRepository,
+                mockAdClickAttributionFeature,
+            )
 
         val result = testee.isAdClick("https://example.com")
 
@@ -164,10 +170,11 @@ class RealAdClickAttributionTest {
                 ),
             ),
         )
-        testee = RealAdClickAttribution(
-            mockAdClickAttributionRepository,
-            mockAdClickAttributionFeature,
-        )
+        testee =
+            RealAdClickAttribution(
+                mockAdClickAttributionRepository,
+                mockAdClickAttributionFeature,
+            )
 
         val result = testee.isAdClick("https://other-example.com")
 
@@ -186,10 +193,11 @@ class RealAdClickAttributionTest {
                 ),
             ),
         )
-        testee = RealAdClickAttribution(
-            mockAdClickAttributionRepository,
-            mockAdClickAttributionFeature,
-        )
+        testee =
+            RealAdClickAttribution(
+                mockAdClickAttributionRepository,
+                mockAdClickAttributionFeature,
+            )
 
         val result = testee.isAdClick("https://example.com")
 
@@ -208,10 +216,11 @@ class RealAdClickAttributionTest {
                 ),
             ),
         )
-        testee = RealAdClickAttribution(
-            mockAdClickAttributionRepository,
-            mockAdClickAttributionFeature,
-        )
+        testee =
+            RealAdClickAttribution(
+                mockAdClickAttributionRepository,
+                mockAdClickAttributionFeature,
+            )
 
         val result = testee.isAdClick("https://example.com?ad_domain=nike.com")
 
@@ -231,10 +240,11 @@ class RealAdClickAttributionTest {
                 ),
             ),
         )
-        testee = RealAdClickAttribution(
-            mockAdClickAttributionRepository,
-            mockAdClickAttributionFeature,
-        )
+        testee =
+            RealAdClickAttribution(
+                mockAdClickAttributionRepository,
+                mockAdClickAttributionFeature,
+            )
 
         val result = testee.isAdClick("https://example.com")
 
@@ -253,10 +263,11 @@ class RealAdClickAttributionTest {
                 ),
             ),
         )
-        testee = RealAdClickAttribution(
-            mockAdClickAttributionRepository,
-            mockAdClickAttributionFeature,
-        )
+        testee =
+            RealAdClickAttribution(
+                mockAdClickAttributionRepository,
+                mockAdClickAttributionFeature,
+            )
 
         val result = testee.isAdClick("https://example.com")
 
@@ -273,7 +284,10 @@ class RealAdClickAttributionTest {
         whenever(mockAdClickAttributionFeature.self().isEnabled()).thenReturn(true)
     }
 
-    private fun givenDetectionsEnabled(domainEnabled: Boolean, heuristicEnabled: Boolean) {
+    private fun givenDetectionsEnabled(
+        domainEnabled: Boolean,
+        heuristicEnabled: Boolean,
+    ) {
         whenever(mockAdClickAttributionRepository.detections).thenReturn(
             listOf(
                 AdClickAttributionDetectionEntity(

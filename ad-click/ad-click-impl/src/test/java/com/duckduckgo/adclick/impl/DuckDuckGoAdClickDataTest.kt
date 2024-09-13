@@ -21,7 +21,6 @@ import com.duckduckgo.adclick.impl.store.exemptions.AdClickExemptionsDao
 import com.duckduckgo.adclick.impl.store.exemptions.AdClickExemptionsDatabase
 import com.duckduckgo.common.test.CoroutineTestRule
 import com.duckduckgo.feature.toggles.api.Toggle
-import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.test.TestScope
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -35,9 +34,9 @@ import org.mockito.kotlin.never
 import org.mockito.kotlin.reset
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
+import java.util.concurrent.TimeUnit
 
 class DuckDuckGoAdClickDataTest {
-
     @get:Rule
     var coroutineRule = CoroutineTestRule()
 
@@ -52,13 +51,14 @@ class DuckDuckGoAdClickDataTest {
     fun before() {
         whenever(mockAdClickAttributionFeature.persistExemptions()).thenReturn(mockToggle)
         whenever(mockDatabase.adClickExemptionsDao()).thenReturn(mockAdClickExemptionsDao)
-        testee = DuckDuckGoAdClickData(
-            database = mockDatabase,
-            coroutineScope = TestScope(),
-            dispatcherProvider = coroutineRule.testDispatcherProvider,
-            adClickAttributionFeature = mockAdClickAttributionFeature,
-            isMainProcess = true,
-        )
+        testee =
+            DuckDuckGoAdClickData(
+                database = mockDatabase,
+                coroutineScope = TestScope(),
+                dispatcherProvider = coroutineRule.testDispatcherProvider,
+                adClickAttributionFeature = mockAdClickAttributionFeature,
+                isMainProcess = true,
+            )
     }
 
     @Test
@@ -246,9 +246,10 @@ class DuckDuckGoAdClickDataTest {
         verify(mockAdClickExemptionsDao).deleteAllExpiredTabExemptions(any())
     }
 
-    private fun exemptionWithExpiration(host: String) = Exemption(
-        hostTldPlusOne = host,
-        navigationExemptionDeadline = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(10),
-        exemptionDeadline = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(60),
-    )
+    private fun exemptionWithExpiration(host: String) =
+        Exemption(
+            hostTldPlusOne = host,
+            navigationExemptionDeadline = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(10),
+            exemptionDeadline = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(60),
+        )
 }

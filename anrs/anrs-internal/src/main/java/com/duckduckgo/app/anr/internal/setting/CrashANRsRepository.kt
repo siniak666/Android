@@ -22,14 +22,17 @@ import com.duckduckgo.app.anr.internal.store.CrashInternalEntity
 import com.duckduckgo.common.utils.DispatcherProvider
 import com.duckduckgo.di.scopes.AppScope
 import com.squareup.anvil.annotations.ContributesBinding
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 interface CrashANRsRepository {
     fun getANRs(): Flow<List<AnrInternalEntity>>
+
     fun getCrashes(): Flow<List<CrashInternalEntity>>
+
     suspend fun insertANR(anr: AnrInternalEntity)
+
     suspend fun insertCrash(crash: CrashInternalEntity)
 }
 

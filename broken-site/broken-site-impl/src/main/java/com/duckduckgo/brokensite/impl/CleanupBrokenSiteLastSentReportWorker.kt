@@ -29,15 +29,14 @@ import com.duckduckgo.app.lifecycle.MainProcessLifecycleObserver
 import com.duckduckgo.common.utils.DispatcherProvider
 import com.duckduckgo.di.scopes.AppScope
 import com.squareup.anvil.annotations.ContributesMultibinding
-import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 import kotlinx.coroutines.withContext
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 @ContributesWorker(AppScope::class)
 class CleanupBrokenSiteLastSentReportWorker(context: Context, workerParameters: WorkerParameters) :
     CoroutineWorker(context, workerParameters) {
-
     @Inject
     lateinit var brokenSiteReportRepository: BrokenSiteReportRepository
 
@@ -60,14 +59,14 @@ class CleanupBrokenSiteLastSentReportWorker(context: Context, workerParameters: 
 class CleanupBrokenSiteLastSentReportWorkerScheduler @Inject constructor(
     private val workManager: WorkManager,
 ) : MainProcessLifecycleObserver {
-
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
         Timber.v("Scheduling cleanup broken site report worker")
-        val workerRequest = PeriodicWorkRequestBuilder<CleanupBrokenSiteLastSentReportWorker>(1, TimeUnit.DAYS)
-            .addTag(CLEANUP_BROKEN_SITE_REPORT_WORKER_TAG)
-            .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 10, TimeUnit.MINUTES)
-            .build()
+        val workerRequest =
+            PeriodicWorkRequestBuilder<CleanupBrokenSiteLastSentReportWorker>(1, TimeUnit.DAYS)
+                .addTag(CLEANUP_BROKEN_SITE_REPORT_WORKER_TAG)
+                .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 10, TimeUnit.MINUTES)
+                .build()
         workManager.enqueueUniquePeriodicWork(CLEANUP_BROKEN_SITE_REPORT_WORKER_TAG, ExistingPeriodicWorkPolicy.REPLACE, workerRequest)
     }
 

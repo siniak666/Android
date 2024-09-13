@@ -27,12 +27,16 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 interface AdClickAttribution {
-
     fun isAllowed(url: String): Boolean
+
     fun isAdClick(url: String): Pair<Boolean, String?>
+
     fun getNavigationExpirationMillis(): Long
+
     fun getTotalExpirationMillis(): Long
+
     fun isHeuristicDetectionEnabled(): Boolean
+
     fun isDomainDetectionEnabled(): Boolean
 }
 
@@ -41,7 +45,6 @@ class RealAdClickAttribution @Inject constructor(
     private val adClickAttributionRepository: AdClickAttributionRepository,
     private val adClickAttributionFeature: AdClickAttributionFeature,
 ) : AdClickAttribution {
-
     override fun isAllowed(url: String): Boolean {
         if (!adClickAttributionFeature.self().isEnabled()) {
             return false
@@ -99,7 +102,10 @@ class RealAdClickAttribution @Inject constructor(
         return adClickAttributionRepository.detections[0].domainDetection.equals(STATE_ENABLED, true)
     }
 
-    private fun matchesFormat(url: String, linkFormat: AdClickAttributionLinkFormatEntity): Pair<Boolean, String?> {
+    private fun matchesFormat(
+        url: String,
+        linkFormat: AdClickAttributionLinkFormatEntity,
+    ): Pair<Boolean, String?> {
         val noMatch = Pair(false, null)
 
         if (!url.contains(linkFormat.url, true)) {

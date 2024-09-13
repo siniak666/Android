@@ -26,15 +26,18 @@ import org.junit.runner.Description
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class CoroutineTestRule(val testDispatcher: TestDispatcher = UnconfinedTestDispatcher(TestCoroutineScheduler())) : TestWatcher() {
-
     val testScope = TestScope(testDispatcher)
 
-    val testDispatcherProvider = object : DispatcherProvider {
-        override fun computation(): CoroutineDispatcher = testDispatcher
-        override fun io(): CoroutineDispatcher = testDispatcher
-        override fun main(): CoroutineDispatcher = testDispatcher
-        override fun unconfined(): CoroutineDispatcher = testDispatcher
-    }
+    val testDispatcherProvider =
+        object : DispatcherProvider {
+            override fun computation(): CoroutineDispatcher = testDispatcher
+
+            override fun io(): CoroutineDispatcher = testDispatcher
+
+            override fun main(): CoroutineDispatcher = testDispatcher
+
+            override fun unconfined(): CoroutineDispatcher = testDispatcher
+        }
 
     override fun starting(description: Description) {
         super.starting(description)

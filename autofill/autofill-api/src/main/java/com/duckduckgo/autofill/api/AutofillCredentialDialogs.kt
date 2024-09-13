@@ -27,9 +27,7 @@ import kotlinx.parcelize.Parcelize
  * Results should be handled by defining a [AutofillFragmentResultsPlugin]
  */
 interface UseGeneratedPasswordDialog {
-
     companion object {
-
         fun resultKey(tabId: String) = "${prefix(tabId, TAG)}/Result"
 
         const val TAG = "GenerateSecurePasswordDialog"
@@ -46,9 +44,7 @@ interface UseGeneratedPasswordDialog {
  * Results should be handled by defining a [AutofillFragmentResultsPlugin]
  */
 interface CredentialAutofillPickerDialog {
-
     companion object {
-
         fun resultKey(tabId: String) = "${prefix(tabId, TAG)}/Result"
 
         const val TAG = "CredentialAutofillPickerDialog"
@@ -65,11 +61,10 @@ interface CredentialAutofillPickerDialog {
  * Results should be handled by defining a [AutofillFragmentResultsPlugin]
  */
 interface CredentialSavePickerDialog {
-
     companion object {
         fun resultKeyUserChoseToSaveCredentials(tabId: String) = "${prefix(tabId, TAG)}/UserChoseToSave"
-        fun resultKeyShouldPromptToDisableAutofill(tabId: String) =
-            "${prefix(tabId, TAG)}/ShouldPromptToDisableAutofill"
+
+        fun resultKeyShouldPromptToDisableAutofill(tabId: String) = "${prefix(tabId, TAG)}/ShouldPromptToDisableAutofill"
 
         const val TAG = "CredentialSavePickerDialog"
         const val KEY_URL = "url"
@@ -83,10 +78,8 @@ interface CredentialSavePickerDialog {
  * Results should be handled by defining a [AutofillFragmentResultsPlugin]
  */
 interface CredentialUpdateExistingCredentialsDialog {
-
     @Parcelize
     sealed interface CredentialUpdateType : Parcelable {
-
         @Parcelize
         object Username : CredentialUpdateType
 
@@ -110,13 +103,11 @@ interface CredentialUpdateExistingCredentialsDialog {
  * Results should be handled by defining a [AutofillFragmentResultsPlugin]
  */
 interface EmailProtectionChooseEmailDialog {
-
     /**
      * Result of the dialog, as determined by which button the user pressed or if they cancelled the dialog
      */
     @Parcelize
     sealed interface UseEmailResultType : Parcelable {
-
         /**
          * User chose to use their personal duck address
          */
@@ -150,13 +141,11 @@ interface EmailProtectionChooseEmailDialog {
  * Results should be handled by defining a [AutofillFragmentResultsPlugin]
  */
 interface EmailProtectionInContextSignUpDialog {
-
     /**
      * Result of the dialog, as determined by which button the user pressed or if they cancelled the dialog
      */
     @Parcelize
     sealed interface EmailProtectionInContextSignUpResult : Parcelable {
-
         /**
          * User chose to enable Email Protection
          */
@@ -188,7 +177,6 @@ interface EmailProtectionInContextSignUpDialog {
  * Factory used to get instances of the various autofill dialogs
  */
 interface CredentialAutofillDialogFactory {
-
     /**
      * Creates a dialog which prompts the user to choose which saved credential to autofill
      */

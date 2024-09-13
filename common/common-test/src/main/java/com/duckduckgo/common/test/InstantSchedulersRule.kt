@@ -24,13 +24,11 @@ import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
 class InstantSchedulersRule : TestRule {
-
     override fun apply(
         base: Statement,
         description: Description,
     ): Statement {
         return object : Statement() {
-
             @Throws(Throwable::class)
             override fun evaluate() {
                 RxJavaPlugins.reset()

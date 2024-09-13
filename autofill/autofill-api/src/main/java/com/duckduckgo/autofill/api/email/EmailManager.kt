@@ -22,7 +22,6 @@ import kotlinx.coroutines.flow.StateFlow
  * Provides ability to store and retrieve data related to the duck address feature such as personal username, if signed in, next alias etc...
  */
 interface EmailManager {
-
     /**
      * Indicates if the user is signed in or not. This is a flow so that it can be observed.
      */

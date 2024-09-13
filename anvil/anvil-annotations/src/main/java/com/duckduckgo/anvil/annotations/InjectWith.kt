@@ -34,10 +34,8 @@ import kotlin.reflect.KClass
 annotation class InjectWith(
     /** The parent component scope to the contributed subcomponent */
     val scope: KClass<*>,
-
     /** (optional) The binding class key to bind the dagger component */
     val bindingKey: KClass<*> = Unit::class,
-
     /** (optional) set to true if you want to delay the generation of the dagger component to the :app module */
     val delayGeneration: Boolean = false,
 )

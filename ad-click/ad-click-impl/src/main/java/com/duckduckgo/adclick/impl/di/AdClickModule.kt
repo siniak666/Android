@@ -39,7 +39,6 @@ import kotlinx.coroutines.CoroutineScope
 @Module
 @ContributesTo(AppScope::class)
 class AdClickModule {
-
     @Provides
     @SingleInstanceIn(AppScope::class)
     fun provideAdClickDatabase(context: Context): AdClickDatabase {

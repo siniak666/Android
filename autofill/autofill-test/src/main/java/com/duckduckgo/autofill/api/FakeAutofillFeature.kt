@@ -20,7 +20,6 @@ import com.duckduckgo.feature.toggles.api.FeatureToggles
 import com.duckduckgo.feature.toggles.api.Toggle
 
 class FakeAutofillFeature private constructor() {
-
     companion object {
         fun create(): AutofillFeature {
             return FeatureToggles.Builder()
@@ -28,7 +27,10 @@ class FakeAutofillFeature private constructor() {
                     object : Toggle.Store {
                         private val map = mutableMapOf<String, Toggle.State>()
 
-                        override fun set(key: String, state: Toggle.State) {
+                        override fun set(
+                            key: String,
+                            state: Toggle.State,
+                        ) {
                             map[key] = state
                         }
 

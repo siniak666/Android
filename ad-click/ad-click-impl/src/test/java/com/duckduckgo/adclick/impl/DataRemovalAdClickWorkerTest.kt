@@ -30,7 +30,6 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
 class DataRemovalAdClickWorkerTest {
-
     @get:Rule
     var coroutineRule = CoroutineTestRule()
 

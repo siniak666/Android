@@ -23,9 +23,9 @@ import com.duckduckgo.adclick.impl.store.AdClickAttributionLinkFormatEntity
 import com.duckduckgo.adclick.impl.store.AdClickDao
 import com.duckduckgo.adclick.impl.store.AdClickDatabase
 import com.duckduckgo.common.utils.DispatcherProvider
-import java.util.concurrent.CopyOnWriteArrayList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import java.util.concurrent.CopyOnWriteArrayList
 
 interface AdClickAttributionRepository {
     fun updateAll(
@@ -36,6 +36,7 @@ interface AdClickAttributionRepository {
         heuristicDetection: String?,
         domainDetection: String?,
     )
+
     val linkFormats: List<AdClickAttributionLinkFormatEntity>
     val allowList: List<AdClickAttributionAllowlistEntity>
     val expirations: List<AdClickAttributionExpirationEntity>
@@ -48,7 +49,6 @@ class RealAdClickAttributionRepository(
     dispatcherProvider: DispatcherProvider,
     isMainProcess: Boolean,
 ) : AdClickAttributionRepository {
-
     private val adClickAttributionDao: AdClickDao = database.adClickDao()
 
     override val linkFormats = CopyOnWriteArrayList<AdClickAttributionLinkFormatEntity>()
@@ -75,18 +75,20 @@ class RealAdClickAttributionRepository(
         adClickAttributionDao.setAll(
             linkFormats = linkFormats.map { AdClickAttributionLinkFormatEntity(it.url, it.adDomainParameterName.orEmpty()) },
             allowList = allowList.map { AdClickAttributionAllowlistEntity(it.blocklistEntry.orEmpty(), it.host.orEmpty()) },
-            expirations = listOf(
-                AdClickAttributionExpirationEntity(
-                    navigationExpiration = navigationExpiration,
-                    totalExpiration = totalExpiration,
+            expirations =
+                listOf(
+                    AdClickAttributionExpirationEntity(
+                        navigationExpiration = navigationExpiration,
+                        totalExpiration = totalExpiration,
+                    ),
                 ),
-            ),
-            detections = listOf(
-                AdClickAttributionDetectionEntity(
-                    heuristicDetection = heuristicDetection.orEmpty(),
-                    domainDetection = domainDetection.orEmpty(),
+            detections =
+                listOf(
+                    AdClickAttributionDetectionEntity(
+                        heuristicDetection = heuristicDetection.orEmpty(),
+                        domainDetection = domainDetection.orEmpty(),
+                    ),
                 ),
-            ),
         )
         loadToMemory()
     }

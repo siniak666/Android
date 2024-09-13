@@ -24,7 +24,6 @@ package com.duckduckgo.autofill.api.emailprotection
  *
  */
 interface EmailProtectionLinkVerifier {
-
     /**
      * Determines if a link should be consumed by the in-context Email Protection feature or opened as a normal URL in the browser.
      *

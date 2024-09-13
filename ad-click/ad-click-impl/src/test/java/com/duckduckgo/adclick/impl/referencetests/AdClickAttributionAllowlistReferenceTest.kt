@@ -28,7 +28,6 @@ import com.duckduckgo.common.test.FileUtilities
 import com.duckduckgo.feature.toggles.api.Toggle
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
-import java.util.concurrent.CopyOnWriteArrayList
 import junit.framework.TestCase.assertEquals
 import org.json.JSONObject
 import org.junit.Before
@@ -37,10 +36,10 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import org.robolectric.ParameterizedRobolectricTestRunner
+import java.util.concurrent.CopyOnWriteArrayList
 
 @RunWith(ParameterizedRobolectricTestRunner::class)
 class AdClickAttributionAllowlistReferenceTest(private val testCase: TestCase) {
-
     lateinit var testee: AdClickAttribution
 
     private val mockRepository: AdClickAttributionRepository = mock()
@@ -63,12 +62,13 @@ class AdClickAttributionAllowlistReferenceTest(private val testCase: TestCase) {
         @JvmStatic
         @ParameterizedRobolectricTestRunner.Parameters(name = "Test case: {index} - {0}")
         fun testData(): List<TestCase> {
-            val test = adapter.fromJson(
-                FileUtilities.loadText(
-                    AdClickAttributionAllowlistReferenceTest::class.java.classLoader!!,
-                    "reference_tests/adclickattribution/ad_click_attribution_matching_tests.json",
-                ),
-            )
+            val test =
+                adapter.fromJson(
+                    FileUtilities.loadText(
+                        AdClickAttributionAllowlistReferenceTest::class.java.classLoader!!,
+                        "reference_tests/adclickattribution/ad_click_attribution_matching_tests.json",
+                    ),
+                )
             return test?.adClickAllowlist?.tests ?: emptyList()
         }
     }
@@ -82,10 +82,11 @@ class AdClickAttributionAllowlistReferenceTest(private val testCase: TestCase) {
     private fun mockAdClickLinkFormats() {
         val jsonAdapter: JsonAdapter<AdClickAttributionFeatureModel> = moshi.adapter(AdClickAttributionFeatureModel::class.java)
         val adClickAllowlist = CopyOnWriteArrayList<AdClickAttributionAllowlistEntity>()
-        val jsonObject: JSONObject = FileUtilities.getJsonObjectFromFile(
-            AdClickAttributionAllowlistReferenceTest::class.java.classLoader!!,
-            "reference_tests/adclickattribution/ad_click_attribution_reference.json",
-        )
+        val jsonObject: JSONObject =
+            FileUtilities.getJsonObjectFromFile(
+                AdClickAttributionAllowlistReferenceTest::class.java.classLoader!!,
+                "reference_tests/adclickattribution/ad_click_attribution_reference.json",
+            )
 
         val allowList: List<AdClickAttributionAllowlist>? = jsonAdapter.fromJson(jsonObject.toString())?.allowlist
         allowList?.let { list ->

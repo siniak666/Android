@@ -20,7 +20,6 @@ import com.duckduckgo.autofill.api.domain.app.LoginCredentials
 import com.duckduckgo.navigation.api.GlobalActivityStarter.ActivityParams
 
 sealed interface AutofillScreens {
-
     /**
      * Launch the Autofill management activity, which will show the full list of available credentials
      * @param source is used to indicate from where in the app Autofill management activity was launched

@@ -48,16 +48,15 @@ import com.duckduckgo.common.utils.DispatcherProvider
 import com.duckduckgo.di.scopes.ActivityScope
 import com.duckduckgo.feature.toggles.api.Toggle
 import com.duckduckgo.navigation.api.GlobalActivityStarter
-import java.text.SimpleDateFormat
-import javax.inject.Inject
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import logcat.logcat
+import java.text.SimpleDateFormat
+import javax.inject.Inject
 
 @InjectWith(ActivityScope::class)
 class AutofillInternalSettingsActivity : DuckDuckGoActivity() {
-
     private val binding: ActivityAutofillInternalSettingsBinding by viewBinding()
 
     @Inject
@@ -209,48 +208,50 @@ class AutofillInternalSettingsActivity : DuckDuckGoActivity() {
         }
     }
 
-    private fun configureNeverSavedSitesEventHandlers() = with(binding) {
-        numberNeverSavedSitesCount.setClickListener {
-            lifecycleScope.launch(dispatchers.io()) {
-                neverSavedSiteRepository.clearNeverSaveList()
+    private fun configureNeverSavedSitesEventHandlers() =
+        with(binding) {
+            numberNeverSavedSitesCount.setClickListener {
+                lifecycleScope.launch(dispatchers.io()) {
+                    neverSavedSiteRepository.clearNeverSaveList()
+                }
+            }
+            addSampleNeverSavedSiteButton.setClickListener {
+                lifecycleScope.launch(dispatchers.io()) {
+                    // should only actually add one entry for all these attempts
+                    neverSavedSiteRepository.addToNeverSaveList("https://fill.dev")
+                    neverSavedSiteRepository.addToNeverSaveList("fill.dev")
+                    neverSavedSiteRepository.addToNeverSaveList("foo.fill.dev")
+                    neverSavedSiteRepository.addToNeverSaveList("fill.dev/?q=123")
+                }
             }
         }
-        addSampleNeverSavedSiteButton.setClickListener {
-            lifecycleScope.launch(dispatchers.io()) {
-                // should only actually add one entry for all these attempts
-                neverSavedSiteRepository.addToNeverSaveList("https://fill.dev")
-                neverSavedSiteRepository.addToNeverSaveList("fill.dev")
-                neverSavedSiteRepository.addToNeverSaveList("foo.fill.dev")
-                neverSavedSiteRepository.addToNeverSaveList("fill.dev/?q=123")
-            }
-        }
-    }
 
-    private fun configureAutofillJsConfigEventHandlers() = with(binding) {
-        val options = listOf(R.string.autofillDevSettingsConfigDebugOptionProduction, R.string.autofillDevSettingsConfigDebugOptionDebug)
+    private fun configureAutofillJsConfigEventHandlers() =
+        with(binding) {
+            val options = listOf(R.string.autofillDevSettingsConfigDebugOptionProduction, R.string.autofillDevSettingsConfigDebugOptionDebug)
 
-        changeAutofillJsConfigButton.setClickListener {
-            RadioListAlertDialogBuilder(this@AutofillInternalSettingsActivity)
-                .setTitle(R.string.autofillDevSettingsConfigSectionTitle)
-                .setOptions(options)
-                .setPositiveButton(R.string.autofillDevSettingsOverrideMaxInstallDialogOkButtonText)
-                .setNegativeButton(R.string.autofillDevSettingsOverrideMaxInstallDialogCancelButtonText)
-                .addEventListener(
-                    object : RadioListAlertDialogBuilder.EventListener() {
-                        override fun onPositiveButtonClicked(selectedItem: Int) {
-                            lifecycleScope.launch(dispatchers.io()) {
-                                when (selectedItem) {
-                                    1 -> autofillJavascriptEnvironmentConfiguration.useProductionConfig()
-                                    2 -> autofillJavascriptEnvironmentConfiguration.useDebugConfig()
+            changeAutofillJsConfigButton.setClickListener {
+                RadioListAlertDialogBuilder(this@AutofillInternalSettingsActivity)
+                    .setTitle(R.string.autofillDevSettingsConfigSectionTitle)
+                    .setOptions(options)
+                    .setPositiveButton(R.string.autofillDevSettingsOverrideMaxInstallDialogOkButtonText)
+                    .setNegativeButton(R.string.autofillDevSettingsOverrideMaxInstallDialogCancelButtonText)
+                    .addEventListener(
+                        object : RadioListAlertDialogBuilder.EventListener() {
+                            override fun onPositiveButtonClicked(selectedItem: Int) {
+                                lifecycleScope.launch(dispatchers.io()) {
+                                    when (selectedItem) {
+                                        1 -> autofillJavascriptEnvironmentConfiguration.useProductionConfig()
+                                        2 -> autofillJavascriptEnvironmentConfiguration.useDebugConfig()
+                                    }
+                                    refreshAutofillJsConfigSettings()
                                 }
-                                refreshAutofillJsConfigSettings()
                             }
-                        }
-                    },
-                )
-                .show()
+                        },
+                    )
+                    .show()
+            }
         }
-    }
 
     private fun configureLoginsUiEventHandlers() {
         binding.addSampleLoginsButton.setClickListener {
@@ -397,14 +398,15 @@ class AutofillInternalSettingsActivity : DuckDuckGoActivity() {
 
         lifecycleScope.launch(dispatchers.main()) {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                emailManager.signedInFlow().collect() { signedIn ->
+                emailManager.signedInFlow().collect { signedIn ->
                     binding.emailProtectionSignOutButton.isEnabled = signedIn
 
-                    val text = if (signedIn) {
-                        getString(R.string.autofillDevSettingsEmailProtectionSignedInAs, emailManager.getEmailAddress())
-                    } else {
-                        getString(R.string.autofillDevSettingsEmailProtectionNotSignedIn)
-                    }
+                    val text =
+                        if (signedIn) {
+                            getString(R.string.autofillDevSettingsEmailProtectionSignedInAs, emailManager.getEmailAddress())
+                        } else {
+                            getString(R.string.autofillDevSettingsEmailProtectionNotSignedIn)
+                        }
 
                     binding.emailProtectionSignOutButton.setSecondaryText(text)
                 }
@@ -417,11 +419,12 @@ class AutofillInternalSettingsActivity : DuckDuckGoActivity() {
             val installDays = inContextDataStore.getMaximumPermittedDaysSinceInstallation()
 
             withContext(dispatchers.main()) {
-                val formatted = when {
-                    (installDays < 0) -> getString(R.string.autofillDevSettingsOverrideMaxInstalledDaysNeverShow)
-                    (installDays == Int.MAX_VALUE) -> getString(R.string.autofillDevSettingsOverrideMaxInstalledDaysAlwaysShow)
-                    else -> getString(R.string.autofillDevSettingsOverrideMaxInstalledDaysSetting, installDays)
-                }
+                val formatted =
+                    when {
+                        (installDays < 0) -> getString(R.string.autofillDevSettingsOverrideMaxInstalledDaysNeverShow)
+                        (installDays == Int.MAX_VALUE) -> getString(R.string.autofillDevSettingsOverrideMaxInstalledDaysAlwaysShow)
+                        else -> getString(R.string.autofillDevSettingsOverrideMaxInstalledDaysSetting, installDays)
+                    }
                 binding.configureDaysFromInstallValue.setPrimaryText(formatted)
             }
         }
@@ -470,11 +473,12 @@ class AutofillInternalSettingsActivity : DuckDuckGoActivity() {
             return Intent(context, AutofillInternalSettingsActivity::class.java)
         }
 
-        private val sampleUrlList = listOf(
-            "fill.dev",
-            "duckduckgo.com",
-            "spreadprivacy.com",
-            "duck.com",
-        )
+        private val sampleUrlList =
+            listOf(
+                "fill.dev",
+                "duckduckgo.com",
+                "spreadprivacy.com",
+                "duck.com",
+            )
     }
 }

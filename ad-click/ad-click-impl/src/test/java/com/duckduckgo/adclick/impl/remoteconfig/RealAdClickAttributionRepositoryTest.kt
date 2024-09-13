@@ -36,7 +36,6 @@ import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 
 class RealAdClickAttributionRepositoryTest {
-
     @get:Rule
     var coroutineRule = CoroutineTestRule()
 
@@ -50,12 +49,13 @@ class RealAdClickAttributionRepositoryTest {
         whenever(mockDatabase.adClickDao()).thenReturn(mockAdClickAttributionDao)
         givenAdClickAttributionDaoContainsInfo()
 
-        testee = RealAdClickAttributionRepository(
-            database = mockDatabase,
-            coroutineScope = TestScope(),
-            dispatcherProvider = coroutineRule.testDispatcherProvider,
-            isMainProcess = true,
-        )
+        testee =
+            RealAdClickAttributionRepository(
+                database = mockDatabase,
+                coroutineScope = TestScope(),
+                dispatcherProvider = coroutineRule.testDispatcherProvider,
+                isMainProcess = true,
+            )
     }
 
     @Test
@@ -119,26 +119,30 @@ class RealAdClickAttributionRepositoryTest {
     }
 
     companion object {
-        val linkFormatEntity = AdClickAttributionLinkFormatEntity(
-            url = "good.first-party.site/y.js",
-            adDomainParameterName = "",
-        )
+        val linkFormatEntity =
+            AdClickAttributionLinkFormatEntity(
+                url = "good.first-party.site/y.js",
+                adDomainParameterName = "",
+            )
 
-        val allowlistEntity = AdClickAttributionAllowlistEntity(
-            blocklistEntry = "ad-site.site",
-            host = "convert.ad-company.site",
-        )
+        val allowlistEntity =
+            AdClickAttributionAllowlistEntity(
+                blocklistEntry = "ad-site.site",
+                host = "convert.ad-company.site",
+            )
 
-        val expirationEntity = AdClickAttributionExpirationEntity(
-            id = 1,
-            navigationExpiration = 1800,
-            totalExpiration = 604800,
-        )
+        val expirationEntity =
+            AdClickAttributionExpirationEntity(
+                id = 1,
+                navigationExpiration = 1800,
+                totalExpiration = 604800,
+            )
 
-        val detectionEntity = AdClickAttributionDetectionEntity(
-            id = 1,
-            domainDetection = "enabled",
-            heuristicDetection = "enabled",
-        )
+        val detectionEntity =
+            AdClickAttributionDetectionEntity(
+                id = 1,
+                domainDetection = "enabled",
+                heuristicDetection = "enabled",
+            )
     }
 }

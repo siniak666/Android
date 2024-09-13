@@ -24,14 +24,16 @@ import android.view.View
  * The password management view supports an area in the screen that can be used for different purposes, such as promotions or surveys.
  */
 interface PasswordsScreenPromotionPlugin {
-
     /**
      * Returns a view to be displayed in the passwords screen, or null if the promotion should not be shown.
      * @param context The context to use to inflate the view.
      * @param numberSavedPasswords The number of saved passwords.
      * @return Some promotions may require criteria to be met before they are shown. If the criteria is not met, this method should return null.
      */
-    suspend fun getView(context: Context, numberSavedPasswords: Int): View?
+    suspend fun getView(
+        context: Context,
+        numberSavedPasswords: Int,
+    ): View?
 
     /**
      * Callback for interactions with the promotion.

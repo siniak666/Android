@@ -25,7 +25,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 abstract class UncaughtExceptionDao {
-
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     abstract fun add(exceptionEntity: ExceptionEntity)
 

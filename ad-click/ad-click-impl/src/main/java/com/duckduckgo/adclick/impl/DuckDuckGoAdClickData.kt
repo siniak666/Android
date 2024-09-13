@@ -21,29 +21,47 @@ import com.duckduckgo.adclick.impl.store.exemptions.AdClickExemptionsDao
 import com.duckduckgo.adclick.impl.store.exemptions.AdClickExemptionsDatabase
 import com.duckduckgo.adclick.impl.store.exemptions.AdClickTabExemptionEntity
 import com.duckduckgo.common.utils.DispatcherProvider
-import java.util.concurrent.ConcurrentHashMap
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.util.concurrent.ConcurrentHashMap
 
 interface AdClickData {
-
     fun setAdDomainTldPlusOne(adDomainTldPlusOne: String)
+
     fun removeAdDomain()
+
     fun removeAdDomain(tabId: String)
+
     fun addExemption(exemption: Exemption)
-    fun addExemption(tabId: String, exemption: Exemption)
+
+    fun addExemption(
+        tabId: String,
+        exemption: Exemption,
+    )
+
     fun getExemption(): Exemption?
+
     fun getExemption(tabId: String): Exemption?
+
     fun isHostExempted(host: String): Boolean
+
     fun removeExemption()
+
     fun setActiveTab(tabId: String)
+
     fun getAdDomainTldPlusOne(): String?
+
     fun getAdDomainTldPlusOne(tabId: String): String?
+
     fun remove(tabId: String)
+
     fun removeAll()
+
     fun removeAllExpired()
+
     fun setCurrentPage(currentPageUrl: String)
+
     fun getCurrentPage(): String
 }
 
@@ -54,7 +72,6 @@ class DuckDuckGoAdClickData(
     private val adClickAttributionFeature: AdClickAttributionFeature,
     isMainProcess: Boolean,
 ) : AdClickData {
-
     private val adClickExemptionsDao: AdClickExemptionsDao = database.adClickExemptionsDao()
 
     private var currentPageUrl = ""
@@ -127,7 +144,10 @@ class DuckDuckGoAdClickData(
         Timber.d("Added exemption for active tab $activeTabId. Tab exemptions: $tabExemptions")
     }
 
-    override fun addExemption(tabId: String, exemption: Exemption) {
+    override fun addExemption(
+        tabId: String,
+        exemption: Exemption,
+    ) {
         tabExemptions[tabId] = exemption
         coroutineScope.launch(dispatcherProvider.io()) {
             if (adClickAttributionFeature.persistExemptions().isEnabled()) {

@@ -23,9 +23,9 @@ import com.duckduckgo.app.browser.UriString
 import com.duckduckgo.di.scopes.AppScope
 import com.squareup.anvil.annotations.ContributesBinding
 import dagger.SingleInstanceIn
-import javax.inject.Inject
 import okhttp3.internal.publicsuffix.PublicSuffixDatabase
 import timber.log.Timber
+import javax.inject.Inject
 
 @SingleInstanceIn(AppScope::class)
 @ContributesBinding(AppScope::class)
@@ -34,10 +34,12 @@ class DuckDuckGoAdClickManager @Inject constructor(
     private val adClickAttribution: AdClickAttribution,
     private val adClickPixels: AdClickPixels,
 ) : AdClickManager {
-
     private val publicSuffixDatabase = PublicSuffixDatabase()
 
-    override fun detectAdClick(url: String?, isMainFrame: Boolean) {
+    override fun detectAdClick(
+        url: String?,
+        isMainFrame: Boolean,
+    ) {
         if (url == null) return
         if (!isMainFrame) return
 
@@ -50,7 +52,12 @@ class DuckDuckGoAdClickManager @Inject constructor(
         updateExemptions(url)
     }
 
-    override fun setActiveTabId(tabId: String, url: String?, sourceTabId: String?, sourceTabUrl: String?) {
+    override fun setActiveTabId(
+        tabId: String,
+        url: String?,
+        sourceTabId: String?,
+        sourceTabUrl: String?,
+    ) {
         adClickData.setActiveTab(tabId)
         if (sourceTabId != null && url != null && sourceTabUrl != null) {
             propagateExemption(tabId, url, sourceTabId, sourceTabUrl)
@@ -84,7 +91,10 @@ class DuckDuckGoAdClickManager @Inject constructor(
         adClickData.removeAllExpired()
     }
 
-    override fun isExemption(documentUrl: String, url: String): Boolean {
+    override fun isExemption(
+        documentUrl: String,
+        url: String,
+    ): Boolean {
         // Example below:
         // documentUrl https://www.onbuy.com/gb/sony-playstation-4-slim-1tb-console-black-new
         // url https://addomain.com/script.js
@@ -163,7 +173,12 @@ class DuckDuckGoAdClickManager @Inject constructor(
         }
     }
 
-    private fun propagateExemption(tabId: String, url: String, sourceTabId: String, sourceTabUrl: String) {
+    private fun propagateExemption(
+        tabId: String,
+        url: String,
+        sourceTabId: String,
+        sourceTabUrl: String,
+    ) {
         val hostTldPlusOne = toTldPlusOne(url) ?: return
 
         val currentExemption = adClickData.getExemption()
@@ -212,7 +227,11 @@ class DuckDuckGoAdClickManager @Inject constructor(
         }
     }
 
-    private fun addNewExemption(savedAdDomain: String?, urlAdDomain: String, url: String) {
+    private fun addNewExemption(
+        savedAdDomain: String?,
+        urlAdDomain: String,
+        url: String,
+    ) {
         adClickData.setCurrentPage(url)
 
         if (savedAdDomain != null) {

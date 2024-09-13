@@ -24,7 +24,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface InternalANRDao {
-
     @Query("SELECT * FROM anr_events")
     fun getAnrs(): Flow<List<AnrInternalEntity>>
 

@@ -27,7 +27,6 @@ import com.duckduckgo.app.anr.internal.setting.VitalsAdapterList.VitalsItems.Anr
 import com.duckduckgo.app.anr.internal.setting.VitalsAdapterList.VitalsItems.CrashItem
 
 class VitalsAdapterList : Adapter<ViewHolder>() {
-
     private var listItems = listOf<VitalsItems>()
 
     override fun onCreateViewHolder(
@@ -118,6 +117,7 @@ class VitalsAdapterList : Adapter<ViewHolder>() {
     }
 
     open class ANRViewHolder(open val binding: ItemAnrBinding) : RecyclerView.ViewHolder(binding.root)
+
     open class CrashViewHolder(open val binding: ItemCrashBinding) : RecyclerView.ViewHolder(binding.root)
 
     companion object {

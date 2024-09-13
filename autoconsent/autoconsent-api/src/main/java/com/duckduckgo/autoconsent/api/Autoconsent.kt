@@ -23,13 +23,19 @@ interface Autoconsent {
     /**
      * This method injects the JS code needed to run autoconsent. It requires a [WebView] instance and the URL where the code will be injected.
      */
-    fun injectAutoconsent(webView: WebView, url: String)
+    fun injectAutoconsent(
+        webView: WebView,
+        url: String,
+    )
 
     /**
      * This method adds the JS interface for autoconsent to create a bridge between JS and our client.
      * It requires a [WebView] instance and an [AutoconsentCallback].
      */
-    fun addJsInterface(webView: WebView, autoconsentCallback: AutoconsentCallback)
+    fun addJsInterface(
+        webView: WebView,
+        autoconsentCallback: AutoconsentCallback,
+    )
 
     /**
      * This method enables or disables autoconsent setting depending on the value passed.
@@ -80,7 +86,12 @@ interface AutoconsentCallback {
     /**
      * This method is called whenever autoconsent has a result to be sent
      */
-    fun onResultReceived(consentManaged: Boolean, optOutFailed: Boolean, selfTestFailed: Boolean, isCosmetic: Boolean?)
+    fun onResultReceived(
+        consentManaged: Boolean,
+        optOutFailed: Boolean,
+        selfTestFailed: Boolean,
+        isCosmetic: Boolean?,
+    )
 }
 
 /** List of [AutoconsentFeatureName] that belong to the Autoconsent feature */

@@ -29,7 +29,10 @@ interface AppTrackerDetector {
      * @return [AppTracker] if the request is a tracker, null otherwise
      */
     @WorkerThread
-    fun evaluate(domain: String, uid: Int): AppTracker?
+    fun evaluate(
+        domain: String,
+        uid: Int,
+    ): AppTracker?
 
     data class AppTracker(
         val domain: String,

@@ -27,14 +27,15 @@ class InMemorySharedPreferences : SharedPreferences, SharedPreferences.Editor {
     private val booleanMap = mutableMapOf<String, Boolean>()
     private val listeners = mutableListOf<SharedPreferences.OnSharedPreferenceChangeListener>()
 
-    private val maps = listOf<MutableMap<String, *>>(
-        stringSetMap,
-        stringMap,
-        intMap,
-        longMap,
-        floatMap,
-        booleanMap,
-    )
+    private val maps =
+        listOf<MutableMap<String, *>>(
+            stringSetMap,
+            stringMap,
+            intMap,
+            longMap,
+            floatMap,
+            booleanMap,
+        )
 
     override fun getAll(): MutableMap<String, *> {
         val map = mutableMapOf<String, Any?>()
@@ -42,27 +43,45 @@ class InMemorySharedPreferences : SharedPreferences, SharedPreferences.Editor {
         return map
     }
 
-    override fun getString(key: String, defValue: String?): String? {
+    override fun getString(
+        key: String,
+        defValue: String?,
+    ): String? {
         return stringMap[key] ?: defValue
     }
 
-    override fun getStringSet(key: String, defValues: MutableSet<String>?): MutableSet<String>? {
+    override fun getStringSet(
+        key: String,
+        defValues: MutableSet<String>?,
+    ): MutableSet<String>? {
         return stringSetMap[key] ?: defValues
     }
 
-    override fun getInt(key: String, defValue: Int): Int {
+    override fun getInt(
+        key: String,
+        defValue: Int,
+    ): Int {
         return intMap[key] ?: defValue
     }
 
-    override fun getLong(key: String, defValue: Long): Long {
+    override fun getLong(
+        key: String,
+        defValue: Long,
+    ): Long {
         return longMap[key] ?: defValue
     }
 
-    override fun getFloat(key: String, defValue: Float): Float {
+    override fun getFloat(
+        key: String,
+        defValue: Float,
+    ): Float {
         return floatMap[key] ?: defValue
     }
 
-    override fun getBoolean(key: String, defValue: Boolean): Boolean {
+    override fun getBoolean(
+        key: String,
+        defValue: Boolean,
+    ): Boolean {
         return booleanMap[key] ?: defValue
     }
 
@@ -82,37 +101,55 @@ class InMemorySharedPreferences : SharedPreferences, SharedPreferences.Editor {
         listeners -= listener
     }
 
-    override fun putString(key: String, value: String?): SharedPreferences.Editor {
+    override fun putString(
+        key: String,
+        value: String?,
+    ): SharedPreferences.Editor {
         stringMap[key] = value
         notifyListeners(key)
         return this
     }
 
-    override fun putStringSet(key: String, values: MutableSet<String>?): SharedPreferences.Editor {
+    override fun putStringSet(
+        key: String,
+        values: MutableSet<String>?,
+    ): SharedPreferences.Editor {
         stringSetMap[key] = values
         notifyListeners(key)
         return this
     }
 
-    override fun putInt(key: String, value: Int): SharedPreferences.Editor {
+    override fun putInt(
+        key: String,
+        value: Int,
+    ): SharedPreferences.Editor {
         intMap[key] = value
         notifyListeners(key)
         return this
     }
 
-    override fun putLong(key: String, value: Long): SharedPreferences.Editor {
+    override fun putLong(
+        key: String,
+        value: Long,
+    ): SharedPreferences.Editor {
         longMap[key] = value
         notifyListeners(key)
         return this
     }
 
-    override fun putFloat(key: String, value: Float): SharedPreferences.Editor {
+    override fun putFloat(
+        key: String,
+        value: Float,
+    ): SharedPreferences.Editor {
         floatMap[key] = value
         notifyListeners(key)
         return this
     }
 
-    override fun putBoolean(key: String, value: Boolean): SharedPreferences.Editor {
+    override fun putBoolean(
+        key: String,
+        value: Boolean,
+    ): SharedPreferences.Editor {
         booleanMap[key] = value
         notifyListeners(key)
         return this

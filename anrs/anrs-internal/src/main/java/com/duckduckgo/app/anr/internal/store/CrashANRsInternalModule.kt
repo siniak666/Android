@@ -27,7 +27,6 @@ import dagger.SingleInstanceIn
 @Module
 @ContributesTo(AppScope::class)
 class CrashANRsInternalModule {
-
     @Provides
     @SingleInstanceIn(AppScope::class)
     fun provideAnrDatabase(context: Context): CrashANRsInternalDatabase {

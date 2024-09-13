@@ -34,7 +34,6 @@ import kotlinx.coroutines.CoroutineScope
 @Module
 @ContributesTo(AppScope::class)
 class BrokenSiteModule {
-
     @SingleInstanceIn(AppScope::class)
     @Provides
     fun provideBrokenSiteReportRepository(

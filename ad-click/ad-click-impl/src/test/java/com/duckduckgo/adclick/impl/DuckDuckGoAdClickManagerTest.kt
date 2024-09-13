@@ -20,7 +20,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.duckduckgo.adclick.api.AdClickManager
 import com.duckduckgo.adclick.impl.pixels.AdClickPixelName
 import com.duckduckgo.adclick.impl.pixels.AdClickPixels
-import java.util.concurrent.TimeUnit
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -33,10 +32,10 @@ import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
+import java.util.concurrent.TimeUnit
 
 @RunWith(AndroidJUnit4::class)
 class DuckDuckGoAdClickManagerTest {
-
     private val mockAdClickData: AdClickData = mock()
     private val mockAdClickAttribution: AdClickAttribution = mock()
     private val mockAdClickPixels: AdClickPixels = mock()
@@ -406,15 +405,17 @@ class DuckDuckGoAdClickManagerTest {
         assertTrue(result)
     }
 
-    private fun expired(hostTldPlusOne: String) = Exemption(
-        hostTldPlusOne = hostTldPlusOne,
-        navigationExemptionDeadline = 0L,
-        exemptionDeadline = 0L,
-    )
+    private fun expired(hostTldPlusOne: String) =
+        Exemption(
+            hostTldPlusOne = hostTldPlusOne,
+            navigationExemptionDeadline = 0L,
+            exemptionDeadline = 0L,
+        )
 
-    private fun notExpired(hostTldPlusOne: String) = Exemption(
-        hostTldPlusOne = hostTldPlusOne,
-        navigationExemptionDeadline = Exemption.NO_EXPIRY,
-        exemptionDeadline = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(10),
-    )
+    private fun notExpired(hostTldPlusOne: String) =
+        Exemption(
+            hostTldPlusOne = hostTldPlusOne,
+            navigationExemptionDeadline = Exemption.NO_EXPIRY,
+            exemptionDeadline = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(10),
+        )
 }

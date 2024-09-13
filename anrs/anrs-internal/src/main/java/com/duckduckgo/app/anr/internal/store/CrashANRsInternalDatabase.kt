@@ -32,6 +32,7 @@ import androidx.room.migration.Migration
 )
 abstract class CrashANRsInternalDatabase : RoomDatabase() {
     abstract fun anrDao(): InternalANRDao
+
     abstract fun crashDao(): InternalCrashDao
 
     companion object {

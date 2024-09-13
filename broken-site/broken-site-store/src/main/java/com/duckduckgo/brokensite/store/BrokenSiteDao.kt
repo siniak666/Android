@@ -23,7 +23,6 @@ import androidx.room.Query
 
 @Dao
 abstract class BrokenSiteDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertBrokenSiteReport(brokenSiteReportEntity: BrokenSiteLastSentReportEntity)
 

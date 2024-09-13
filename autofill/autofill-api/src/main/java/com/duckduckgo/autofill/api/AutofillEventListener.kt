@@ -24,7 +24,6 @@ import com.duckduckgo.autofill.api.domain.app.LoginCredentials
  */
 @MainThread
 interface AutofillEventListener {
-
     /**
      * Called when user chooses to use a generated password when prompted.
      * @param originalUrl the URL of the page that prompted the user to use a generated password
@@ -42,14 +41,20 @@ interface AutofillEventListener {
      * @param originalUrl the URL of the page that prompted the user to use their personal duck address
      * @param duckAddress the personal duck address that the user chose to autofill
      */
-    fun onUseEmailProtectionPersonalAddress(originalUrl: String, duckAddress: String)
+    fun onUseEmailProtectionPersonalAddress(
+        originalUrl: String,
+        duckAddress: String,
+    )
 
     /**
      * Called when user chooses to autofill a private duck address (private alias).
      * @param originalUrl the URL of the page that prompted the user to use a private duck address
      * @param duckAddress the private duck address that the user chose to autofill
      */
-    fun onUseEmailProtectionPrivateAlias(originalUrl: String, duckAddress: String)
+    fun onUseEmailProtectionPrivateAlias(
+        originalUrl: String,
+        duckAddress: String,
+    )
 
     /**
      * Called when user chooses to sign up for in-context email protection.
@@ -66,7 +71,10 @@ interface AutofillEventListener {
      * @param originalUrl the URL of the page that prompted the user to use a login credential
      * @param selectedCredentials the login credential that the user chose to autofill
      */
-    fun onShareCredentialsForAutofill(originalUrl: String, selectedCredentials: LoginCredentials)
+    fun onShareCredentialsForAutofill(
+        originalUrl: String,
+        selectedCredentials: LoginCredentials,
+    )
 
     /**
      * Called when user chooses not to autofill any login credential to a web page.

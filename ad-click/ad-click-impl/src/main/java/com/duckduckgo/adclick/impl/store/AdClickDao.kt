@@ -24,7 +24,6 @@ import androidx.room.Transaction
 
 @Dao
 abstract class AdClickDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertLinkFormats(linkFormats: List<AdClickAttributionLinkFormatEntity>)
 

@@ -29,7 +29,6 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
 class CleanupBrokenSiteLastSentReportWorkerTest {
-
     @get:Rule
     var coroutineRule = CoroutineTestRule()
 

@@ -45,21 +45,16 @@ import kotlin.reflect.KClass
 annotation class ContributesRemoteFeature(
     /** The scope in which to include this contributed PluginPoint */
     val scope: KClass<*>,
-
     /**
      * Type that the feature will be bound to
      */
     val boundType: KClass<*> = Unit::class,
-
     /** The name of the remote feature */
     val featureName: String,
-
     /** The class that implements the [FeatureSettings.Store] interface */
     val settingsStore: KClass<*> = Unit::class,
-
     /** The class that implements the [FeatureExceptions.Store] interface */
     val exceptionsStore: KClass<*> = Unit::class,
-
     /** The class that implements the [Toggle.Store] interface */
     val toggleStore: KClass<*> = Unit::class,
 )

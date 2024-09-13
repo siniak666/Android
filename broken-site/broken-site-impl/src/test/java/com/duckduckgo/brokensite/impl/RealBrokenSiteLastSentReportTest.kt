@@ -26,7 +26,6 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
 class RealBrokenSiteLastSentReportTest {
-
     @get:Rule
     var coroutineRule = CoroutineTestRule()
 
@@ -39,20 +38,22 @@ class RealBrokenSiteLastSentReportTest {
     }
 
     @Test
-    fun whenGetLastSentDayCalledWithHostnameThenGetLastSentDayFromRepositoryIsCalled() = runTest {
-        val hostname = "www.example.com"
+    fun whenGetLastSentDayCalledWithHostnameThenGetLastSentDayFromRepositoryIsCalled() =
+        runTest {
+            val hostname = "www.example.com"
 
-        testee.getLastSentDay(hostname)
+            testee.getLastSentDay(hostname)
 
-        verify(mockBrokenSiteReportRepository).getLastSentDay(hostname)
-    }
+            verify(mockBrokenSiteReportRepository).getLastSentDay(hostname)
+        }
 
     @Test
-    fun whenSetLastSentDayCalledWithHostnameThenSetLastSentDayFromRepositoryIsCalled() = runTest {
-        val hostname = "www.example.com"
+    fun whenSetLastSentDayCalledWithHostnameThenSetLastSentDayFromRepositoryIsCalled() =
+        runTest {
+            val hostname = "www.example.com"
 
-        testee.setLastSentDay(hostname)
+            testee.setLastSentDay(hostname)
 
-        verify(mockBrokenSiteReportRepository).setLastSentDay(hostname)
-    }
+            verify(mockBrokenSiteReportRepository).setLastSentDay(hostname)
+        }
 }

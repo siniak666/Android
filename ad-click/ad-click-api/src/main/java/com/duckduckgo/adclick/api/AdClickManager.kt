@@ -18,7 +18,6 @@ package com.duckduckgo.adclick.api
 
 /** Public interface for the Ad Click feature which helps to measure ad conversions only when they are required */
 interface AdClickManager {
-
     /**
      * Sets the active tab. It takes as parameters:
      * mandatory [tabId] - The id of the current visible tab.
@@ -26,14 +25,22 @@ interface AdClickManager {
      * optional [sourceTabId] - The id of the tab from which the current tab was opened, null if a new tab option was used.
      * optional [sourceTabUrl] - The url loaded in the tab from which the current tab was opened, null if a new tab option was used.
      */
-    fun setActiveTabId(tabId: String, url: String? = null, sourceTabId: String? = null, sourceTabUrl: String? = null)
+    fun setActiveTabId(
+        tabId: String,
+        url: String? = null,
+        sourceTabId: String? = null,
+        sourceTabUrl: String? = null,
+    )
 
     /**
      * Detects and registers the eTLD+1 if an ad link was clicked. It takes as parameters:
      * optional [url] - The requested url, null if no url was requested.
      * mandatory [isMainFrame] - True if the request is for mainframe, false otherwise.
      */
-    fun detectAdClick(url: String?, isMainFrame: Boolean)
+    fun detectAdClick(
+        url: String?,
+        isMainFrame: Boolean,
+    )
 
     /**
      * Detects and saves in memory the ad eTLD+1 domain from the url. It takes as parameters:
@@ -63,5 +70,8 @@ interface AdClickManager {
      * mandatory [url] - The requested url, potentially a tracker used for ad attribution.
      * @return `true` if there is an existing exemption for this combination of [documentUrl] and [url], false otherwise.
      */
-    fun isExemption(documentUrl: String, url: String): Boolean
+    fun isExemption(
+        documentUrl: String,
+        url: String,
+    ): Boolean
 }

@@ -20,7 +20,6 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 internal class DatabaseDateFormatter {
-
     companion object {
         private val FORMATTER_SECONDS: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
 

@@ -17,7 +17,6 @@
 package com.duckduckgo.brokensite.api
 
 interface BrokenSiteLastSentReport {
-
     /**
      * Retrieves the date when a broken site report was last sent for the specified hostname. The 'broken_site_last_sent_report' table in
      * the 'broken_site' database stores this date.

@@ -30,15 +30,14 @@ import com.duckduckgo.app.lifecycle.MainProcessLifecycleObserver
 import com.duckduckgo.common.utils.DispatcherProvider
 import com.duckduckgo.di.scopes.AppScope
 import com.squareup.anvil.annotations.ContributesMultibinding
-import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 import kotlinx.coroutines.withContext
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 @ContributesWorker(AppScope::class)
 class DataRemovalAdClickWorker(context: Context, workerParameters: WorkerParameters) :
     CoroutineWorker(context, workerParameters) {
-
     @Inject
     lateinit var adClickManager: AdClickManager
 
@@ -61,14 +60,14 @@ class DataRemovalAdClickWorker(context: Context, workerParameters: WorkerParamet
 class DataRemovalAdClickWorkerScheduler @Inject constructor(
     private val workManager: WorkManager,
 ) : MainProcessLifecycleObserver {
-
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
         Timber.v("Scheduling ad click data removal worker")
-        val workerRequest = PeriodicWorkRequestBuilder<DataRemovalAdClickWorker>(12, TimeUnit.HOURS)
-            .addTag(DATA_REMOVAL_AD_CLICK_WORKER_TAG)
-            .setBackoffCriteria(BackoffPolicy.LINEAR, 10, TimeUnit.MINUTES)
-            .build()
+        val workerRequest =
+            PeriodicWorkRequestBuilder<DataRemovalAdClickWorker>(12, TimeUnit.HOURS)
+                .addTag(DATA_REMOVAL_AD_CLICK_WORKER_TAG)
+                .setBackoffCriteria(BackoffPolicy.LINEAR, 10, TimeUnit.MINUTES)
+                .build()
         workManager.enqueueUniquePeriodicWork(DATA_REMOVAL_AD_CLICK_WORKER_TAG, ExistingPeriodicWorkPolicy.REPLACE, workerRequest)
     }
 

@@ -36,11 +36,11 @@ import com.duckduckgo.di.scopes.ViewScope
 import com.duckduckgo.navigation.api.GlobalActivityStarter
 import com.squareup.anvil.annotations.ContributesMultibinding
 import dagger.android.support.AndroidSupportInjection
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @InjectWith(ViewScope::class)
 class CrashANRsListView @JvmOverloads constructor(
@@ -48,7 +48,6 @@ class CrashANRsListView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyle: Int = 0,
 ) : FrameLayout(context, attrs, defStyle) {
-
     @Inject
     lateinit var globalActivityStarter: GlobalActivityStarter
 
@@ -80,15 +79,16 @@ class CrashANRsListView @JvmOverloads constructor(
                             customTab = it.customTab,
                             timestamp = it.timestamp,
                         )
-                    } + crashes.map {
-                        CrashItem(
-                            stackTrace = it.stackTrace,
-                            processName = it.processName,
-                            customTab = it.customTab,
-                            timestamp = it.timestamp,
-                        )
-                    }
-                    ).sortedByDescending { it.timestamp }
+                    } +
+                        crashes.map {
+                            CrashItem(
+                                stackTrace = it.stackTrace,
+                                processName = it.processName,
+                                customTab = it.customTab,
+                                timestamp = it.timestamp,
+                            )
+                        }
+                ).sortedByDescending { it.timestamp }
             }.flowOn(dispatcherProvider.io()).collect {
                 anrAdapter.setItems(it)
             }

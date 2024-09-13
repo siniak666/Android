@@ -30,7 +30,6 @@ import javax.inject.Inject
 class AdClickAttributionFeatureSettingsStore @Inject constructor(
     private val adClickAttributionRepository: AdClickAttributionRepository,
 ) : FeatureSettings.Store {
-
     private val jsonAdapter by lazy { buildJsonAdapter() }
 
     override fun store(jsonString: String) {

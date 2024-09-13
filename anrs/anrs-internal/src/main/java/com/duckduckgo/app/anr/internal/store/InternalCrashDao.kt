@@ -24,7 +24,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface InternalCrashDao {
-
     @Query("SELECT * FROM crash_events")
     fun getCrashes(): Flow<List<CrashInternalEntity>>
 

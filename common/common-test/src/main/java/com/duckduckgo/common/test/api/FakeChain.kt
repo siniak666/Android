@@ -16,8 +16,8 @@
 
 package com.duckduckgo.common.test.api
 
-import java.util.concurrent.TimeUnit
 import okhttp3.*
+import java.util.concurrent.TimeUnit
 
 open class FakeChain(
     private val url: String,

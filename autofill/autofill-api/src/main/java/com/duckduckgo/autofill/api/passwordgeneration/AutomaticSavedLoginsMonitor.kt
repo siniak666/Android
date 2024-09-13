@@ -25,7 +25,6 @@ package com.duckduckgo.autofill.api.passwordgeneration
  * By design, an automatically saved login is only monitored for the current page; when a navigation event happens it will be cleared.
  */
 interface AutomaticSavedLoginsMonitor {
-
     /**
      * Retrieves the automatically saved login ID for the current tab, if any.
      * @return the login ID, or null if no login was automatically saved for the current tab.
@@ -35,7 +34,10 @@ interface AutomaticSavedLoginsMonitor {
     /**
      * Sets the automatically saved login ID for the current tab.
      */
-    fun setAutoSavedLoginId(value: Long, tabId: String?)
+    fun setAutoSavedLoginId(
+        value: Long,
+        tabId: String?,
+    )
 
     /**
      * Clears the automatically saved login ID for the current tab.

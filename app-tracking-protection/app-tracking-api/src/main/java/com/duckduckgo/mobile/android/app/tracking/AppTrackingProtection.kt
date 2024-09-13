@@ -17,7 +17,6 @@
 package com.duckduckgo.mobile.android.app.tracking
 
 interface AppTrackingProtection {
-
     /**
      * This method returns whether the user has gone through AppTP onboarding
      * @return Returns `true` if user has gone through AppTP onboarding, `false` otherwise

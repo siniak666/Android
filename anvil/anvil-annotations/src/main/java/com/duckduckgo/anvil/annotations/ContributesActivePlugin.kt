@@ -39,19 +39,16 @@ import kotlin.reflect.KClass
 annotation class ContributesActivePlugin(
     /** The scope in which to include this contributed PluginPoint */
     val scope: KClass<*>,
-
     /**
      * This is the type of the plugin the annotated class is extending from
      * This is a required member to help the code generation.
      */
     val boundType: KClass<*>,
-
     /**
      * The default value of remote feature flag.
      * Default is true (ie. enabled)
      */
     val defaultActiveValue: Boolean = true,
-
     /**
      * The priority for the plugin.
      * Lower priority values mean the associated plugin comes first in the list of plugins.
@@ -60,14 +57,12 @@ annotation class ContributesActivePlugin(
      * The [ContributesActivePlugin] coalesce both
      */
     val priority: Int = 0,
-
     /**
      * When `true` the backing feature flag supports experimentation. Otherwise it will be a regular feature flag.
      *
      * When `true` the (generated) backing feature flag is annotated with the [Experiment] annotation (read its JavaDoc)
      */
     val supportExperiments: Boolean = false,
-
     /**
      * When `true` the backing feature flag will ALWAYS be enabled for internal builds, regardless of remote config or default value.
      */

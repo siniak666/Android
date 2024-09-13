@@ -31,7 +31,6 @@ import javax.inject.Inject
 @InjectWith(ActivityScope::class)
 @ContributeToActivityStarter(InternalCrashSettings::class)
 class CrashANRsInternalSettingsActivity : DuckDuckGoActivity() {
-
     @Inject
     lateinit var settings: PluginPoint<CrashANRsSettingPlugin>
 

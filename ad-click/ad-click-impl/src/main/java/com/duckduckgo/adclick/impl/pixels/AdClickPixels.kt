@@ -30,8 +30,16 @@ import javax.inject.Inject
 
 interface AdClickPixels {
     fun fireAdClickActivePixel(exemption: Exemption?): Boolean
-    fun fireAdClickDetectedPixel(savedAdDomain: String?, urlAdDomain: String, heuristicEnabled: Boolean, domainEnabled: Boolean)
+
+    fun fireAdClickDetectedPixel(
+        savedAdDomain: String?,
+        urlAdDomain: String,
+        heuristicEnabled: Boolean,
+        domainEnabled: Boolean,
+    )
+
     fun updateCountPixel(adClickPixelName: AdClickPixelName)
+
     fun fireCountPixel(adClickPixelName: AdClickPixelName)
 }
 
@@ -40,7 +48,6 @@ class RealAdClickPixels @Inject constructor(
     private val pixel: Pixel,
     private val context: Context,
 ) : AdClickPixels {
-
     private val preferences: SharedPreferences by lazy { context.getSharedPreferences(FILENAME, Context.MODE_PRIVATE) }
 
     override fun fireAdClickActivePixel(exemption: Exemption?): Boolean {
@@ -51,7 +58,12 @@ class RealAdClickPixels @Inject constructor(
         return true
     }
 
-    override fun fireAdClickDetectedPixel(savedAdDomain: String?, urlAdDomain: String, heuristicEnabled: Boolean, domainEnabled: Boolean) {
+    override fun fireAdClickDetectedPixel(
+        savedAdDomain: String?,
+        urlAdDomain: String,
+        heuristicEnabled: Boolean,
+        domainEnabled: Boolean,
+    ) {
         val params = mutableMapOf<String, String>()
         when {
             !savedAdDomain.isNullOrEmpty() && savedAdDomain == urlAdDomain ->

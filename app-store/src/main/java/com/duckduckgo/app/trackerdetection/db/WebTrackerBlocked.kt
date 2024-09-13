@@ -28,7 +28,6 @@ data class WebTrackerBlocked(
     val trackerCompany: String,
     val timestamp: String = timestamp(),
 ) {
-
     companion object {
         private val FORMATTER_SECONDS: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
 

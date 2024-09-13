@@ -23,7 +23,6 @@ import androidx.room.Query
 
 @Dao
 abstract class AdClickExemptionsDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertTabExemption(tabExemptionEntity: AdClickTabExemptionEntity)
 

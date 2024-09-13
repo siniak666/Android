@@ -87,7 +87,6 @@ interface BrowserAutofill {
  * Callback for Email Protection prompts, signalling when to show the native UI to the user
  */
 interface EmailProtectionUserPromptListener {
-
     /**
      * Called when the user should be shown prompt to sign up for Email Protection
      */
@@ -103,7 +102,6 @@ interface EmailProtectionUserPromptListener {
  * Callback for Email Protection events that might happen during the in-context signup flow
  */
 interface EmailProtectionInContextSignupFlowListener {
-
     /**
      * Called when the in-context email protection signup flow should be closed
      */
@@ -114,7 +112,6 @@ interface EmailProtectionInContextSignupFlowListener {
  * Browser Autofill callbacks
  */
 interface Callback {
-
     /**
      * Called when we've determined we have credentials we can offer to autofill for the user.
      * When this is called, we should present the list to the user for them to choose which one, if any, to autofill.

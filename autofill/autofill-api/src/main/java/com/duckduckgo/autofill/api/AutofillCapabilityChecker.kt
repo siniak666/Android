@@ -22,7 +22,6 @@ package com.duckduckgo.autofill.api
  * Whether autofill features are enabled depends on a variety of inputs. This class provides a single way to query the status of all of them.
  */
 interface AutofillCapabilityChecker {
-
     /**
      * Whether autofill can inject credentials into a WebView for the given page.
      * @param url The URL of the webpage to check.
