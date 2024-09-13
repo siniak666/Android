@@ -51,5 +51,4 @@ You can also trigger an automatic code formatting of the code by executing:
 
 ```
 ./gradleW app:spotlessApply
-./gradleW formatKotlin
 ```
