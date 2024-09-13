@@ -4,7 +4,7 @@ buildscript {
 
     ext {
         kotlin_version = '1.9.24'
-        spotless = '6.1.2'
+        spotless = '6.25.0'
         anvil_version = '2.5.0-beta11'
         ksp_version = '1.9.24-1.0.20'
         gradle_plugin = '8.5.1'
