@@ -249,6 +249,7 @@ import com.duckduckgo.autofill.impl.AutofillFireproofDialogSuppressor
 import com.duckduckgo.browser.api.UserBrowserProperties
 import com.duckduckgo.browser.api.brokensite.BrokenSiteData
 import com.duckduckgo.browser.api.brokensite.BrokenSiteData.ReportFlow.MENU
+import com.duckduckgo.browser.api.download.WebViewBlobDownloader
 import com.duckduckgo.common.utils.AppUrl
 import com.duckduckgo.common.utils.DispatcherProvider
 import com.duckduckgo.common.utils.SingleLiveEvent
@@ -330,7 +331,6 @@ import kotlin.collections.set
 import kotlin.collections.setOf
 import kotlin.collections.take
 import kotlin.collections.toList
-import kotlin.collections.toMutableMap
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -415,6 +415,7 @@ class BrowserTabViewModel @Inject constructor(
     private val duckPlayer: DuckPlayer,
     private val duckPlayerJSHelper: DuckPlayerJSHelper,
     private val loadingBarExperimentManager: LoadingBarExperimentManager,
+    private val webViewBlobDownloader: WebViewBlobDownloader,
 ) : WebViewClientListener,
     EditSavedSiteListener,
     DeleteBookmarkListener,
@@ -425,11 +426,6 @@ class BrowserTabViewModel @Inject constructor(
     private var buildingSiteFactoryJob: Job? = null
     private var hasUserSeenHistoryIAM = false
     private var lastAutoCompleteState: AutoCompleteViewState? = null
-
-    private val replyProxyMap = mutableMapOf<String, JavaScriptReplyProxy>()
-
-    // Map<String, Map<String, JavaScriptReplyProxy>>() = Map<Origin, Map<location.href, JavaScriptReplyProxy>>()
-    private val fixedReplyProxyMap = mutableMapOf<String, Map<String, JavaScriptReplyProxy>>()
 
     data class LocationPermission(
         val origin: String,
@@ -1375,7 +1371,7 @@ class BrowserTabViewModel @Inject constructor(
         title: String?,
     ) {
         Timber.v("Page changed: $url")
-        cleanupBlobDownloadReplyProxyMaps()
+        webViewBlobDownloader.clearReplyMap()
 
         hasCtaBeenShownForCurrentPage.set(false)
         buildSiteFactory(url, title, urlUnchangedForExternalLaunchPurposes(site?.url, url))
@@ -1461,11 +1457,6 @@ class BrowserTabViewModel @Inject constructor(
             val hasBrowserError = currentBrowserViewState().browserError != OMITTED
             privacyProtectionsPopupManager.onPageLoaded(url, httpErrorCodeEvents, hasBrowserError)
         }
-    }
-
-    private fun cleanupBlobDownloadReplyProxyMaps() {
-        fixedReplyProxyMap.clear()
-        replyProxyMap.clear()
     }
 
     private fun setAdClickActiveTabData(url: String?) {
@@ -2989,36 +2980,10 @@ class BrowserTabViewModel @Inject constructor(
         command.postValue(RequestFileDownload(url, contentDisposition, mimeType, requestUserConfirmation))
     }
 
-    @SuppressLint("RequiresFeature") // it's already checked in isBlobDownloadWebViewFeatureEnabled
     private fun postMessageToConvertBlobToDataUri(url: String) {
-        appCoroutineScope.launch(dispatchers.main()) { // main because postMessage is not always safe in another thread
-            if (withContext(dispatchers.io()) { androidBrowserConfig.fixBlobDownloadWithIframes().isEnabled() }) {
-                for ((key, proxies) in fixedReplyProxyMap) {
-                    if (sameOrigin(url.removePrefix("blob:"), key)) {
-                        for (replyProxy in proxies.values) {
-                            replyProxy.postMessage(url)
-                        }
-                        return@launch
-                    }
-                }
-            } else {
-                for ((key, value) in replyProxyMap) {
-                    if (sameOrigin(url.removePrefix("blob:"), key)) {
-                        value.postMessage(url)
-                        return@launch
-                    }
-                }
-            }
+        viewModelScope.launch {
+            webViewBlobDownloader.requestBlobToDataUri(url)
         }
-    }
-
-    private fun sameOrigin(firstUrl: String, secondUrl: String): Boolean {
-        return kotlin.runCatching {
-            val firstUri = Uri.parse(firstUrl)
-            val secondUri = Uri.parse(secondUrl)
-
-            firstUri.host == secondUri.host && firstUri.scheme == secondUri.scheme && firstUri.port == secondUri.port
-        }.getOrNull() ?: return false
     }
 
     fun showEmailProtectionChooseEmailPrompt(autofillWebMessageRequest: AutofillWebMessageRequest) {
@@ -3643,16 +3608,8 @@ class BrowserTabViewModel @Inject constructor(
     }
 
     fun saveReplyProxyForBlobDownload(originUrl: String, replyProxy: JavaScriptReplyProxy, locationHref: String? = null) {
-        appCoroutineScope.launch(dispatchers.io()) { // FF check has disk IO
-            if (androidBrowserConfig.fixBlobDownloadWithIframes().isEnabled()) {
-                val frameProxies = fixedReplyProxyMap[originUrl]?.toMutableMap() ?: mutableMapOf()
-                // if location.href is not passed, we fall back to origin
-                val safeLocationHref = locationHref ?: originUrl
-                frameProxies[safeLocationHref] = replyProxy
-                fixedReplyProxyMap[originUrl] = frameProxies
-            } else {
-                replyProxyMap[originUrl] = replyProxy
-            }
+        viewModelScope.launch {
+            webViewBlobDownloader.saveReplyProxyForBlobDownload(originUrl, replyProxy, locationHref)
         }
     }
 
@@ -3723,6 +3680,10 @@ class BrowserTabViewModel @Inject constructor(
 
     fun onNewTabShown() {
         newTabPixels.get().fireNewTabDisplayed()
+    }
+
+    suspend fun configureWebViewForBlobDownload(webView: DuckDuckGoWebView) {
+        webViewBlobDownloader.configureWebViewForBlobDownload(webView)
     }
 
     companion object {
